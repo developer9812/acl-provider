@@ -1,0 +1,7 @@
+192.168.1.60 - - [21/Sep/2017:13:25:01 +0530] "GET / HTTP/1.1" 200 2586 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36"
+192.168.1.60 - - [21/Sep/2017:13:25:01 +0530] "GET /favicon.ico HTTP/1.1" 200 - "http://testing.com/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36"
+192.168.1.60 - - [21/Sep/2017:13:30:34 +0530] "GET / HTTP/1.1" 200 2594 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36"
+192.168.1.60 - - [21/Sep/2017:13:30:34 +0530] "GET /favicon.ico HTTP/1.1" 200 - "http://192.168.1.60:81/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36"
+192.168.1.60 - - [21/Sep/2017:13:31:25 +0530] "-" 408 - "-" "-"
+192.168.1.48 - - [21/Sep/2017:14:16:12 +0530] "GET / HTTP/1.1" 200 2594 "-" "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0"
+192.168.1.48 - - [21/Sep/2017:14:16:14 +0530] "GET /favicon.ico HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0"
