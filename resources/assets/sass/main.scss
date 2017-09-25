@@ -1,0 +1,34 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+@import "./node_modules/bulma/sass/utilities/initial-variables";
+
+$family-serif: "Merriweather", "Georgia", serif;
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: rgba(227, 74, 26, 0.88);
+$primary-invert: white;
+// Use the new serif family
+$family-primary: "Raleway", sans-serif;
+
+@import './node_modules/bulma/bulma.sass';
+
+$primary-color: rgba(227, 74, 26, 0.88);
+
+.navbar {
+  background-color: $primary;
+  color: white;
+  .navbar-item{
+    color: white;
+    &:hover{
+      color: white;
+      background-color: darken($primary, 10);
+    }
+    &.nav-title{
+      // font-family: "Raleway", sans-serif;
+      font-size: large;
+      font-weight: 600;
+    }
+  }
+}

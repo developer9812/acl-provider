@@ -20,3 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/passport', 'Auth\PassportController@index');
+
+Route::get('/admin/oauth', 'AdminController@index');
+Route::get('/admin/oauth/clients', 'AdminController@getAllClients');
