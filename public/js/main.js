@@ -29833,7 +29833,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n  All Clients\n  "), _c('div', {
     staticClass: "column"
   }, [_c('table', {
-    staticClass: "table"
+    staticClass: "table is-striped is-narrow is-fullwidth"
   }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.clients), function(client) {
     return _c('tr', [_c('td', [_vm._v(_vm._s(client.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(client.password_client))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(client.secret))])])
   }))])])])

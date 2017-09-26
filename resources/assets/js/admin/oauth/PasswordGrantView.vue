@@ -3,7 +3,7 @@
     All Clients
     <div class="column">
 
-      <table class="table" >
+      <table class="table is-striped is-narrow is-fullwidth" >
         <thead>
           <tr>
             <th>Name</th>

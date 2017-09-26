@@ -40,6 +40,11 @@
          <password-grant-view></password-grant-view>
        </div>
      </section>
+     <section class="section">
+       <div class="container">
+         Token Expiry Time
+       </div>
+     </section>
     </div>
     <script type="text/javascript" src="{{URL::asset('js/main.js')}}"></script>
   </body>
