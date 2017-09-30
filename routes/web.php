@@ -23,3 +23,26 @@ Route::get('/passport', 'Auth\PassportController@index');
 
 Route::get('/admin/oauth', 'AdminController@index');
 Route::get('/admin/oauth/clients', 'AdminController@getAllClients');
+
+Route::get('/admin/oauth/expiry', 'AdminController@getTokenExpiry');
+Route::post('/admin/oauth/expiry/update', 'AdminController@updateTokenExpiry');
+
+Route::get('/user/roles', 'UserRoleController@index');
+Route::get('/user/roles/get', 'UserRoleController@getRoles');
+Route::post('/user/roles/create', 'UserRoleController@createRole');
+Route::post('/user/roles/permission/update', 'UserRoleController@updatePermissions');
+Route::get('/user/roles/permission', 'UserRoleController@getPermissions');
+Route::delete('/user/role/{role}', 'UserRoleController@deleteRole');
+
+Route::get('routes', function() {
+    $routeCollection = Route::getRoutes();
+    foreach ($routeCollection as $key => $value) {
+      if (substr($value->uri, 0 , 3) == 'api')
+      {
+        print_r($key);
+        echo "&nbsp;&nbsp;";
+        print_r($value->uri);
+        echo "<br />";
+      }
+    }
+});

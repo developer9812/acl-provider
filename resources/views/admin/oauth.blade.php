@@ -30,19 +30,39 @@
       </section>
       <div class="tabs">
         <ul>
-          <li class="is-active"><a>Password Grant</a></li>
+          <li :class="{'is-active': activeTab == 'password-grant'}"><a @click="activeTab = 'password-grant'">Password Grant</a></li>
           <li><a>OAuth Clients</a></li>
           <li><a>Personal Access Tokens</a></li>
+          <li :class="{'is-active': activeTab == 'settings'}"><a @click="activeTab = 'settings'">Settings</a></li>
         </ul>
       </div>
-      <section class="section">
+      <section class="section" v-if="activeTab == 'password-grant'">
        <div class="container">
          <password-grant-view></password-grant-view>
        </div>
      </section>
-     <section class="section">
+     <section class="section" v-if="activeTab == 'settings'">
        <div class="container">
          Token Expiry Time
+         <div class="field has-addons">
+          <p class="control">
+            <span class="select">
+              <select v-model="expiryUnit">
+                <option value='second'>Sec</option>
+                <option value='minute'>Min</option>
+                <option value='hour'>Hr</option>
+              </select>
+            </span>
+          </p>
+          <p class="control">
+            <input class="input" type="text" placeholder="Token Expiry Time" v-model="tokenExpiry">
+          </p>
+          <p class="control">
+            <a class="button" @click="updateExpiry">
+              Update
+            </a>
+          </p>
+        </div>
        </div>
      </section>
     </div>

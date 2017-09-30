@@ -1,0 +1,1 @@
+[Fri Sep 29 13:25:34.095900 2017] [php7:error] [pid 20822] [client ::1:45434] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 73404416 bytes) in /var/www/html/oauth-server/routes/web.php on line 42
