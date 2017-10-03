@@ -55,6 +55,7 @@ class PermissionCreator extends Command
       } else {
         $this->info("Getting all permissions");
         foreach ( $permissions as $key => $resources) {
+          $this->info("Key " . $key);
           if (is_array($resources)) {
             foreach ($resources as $key => $resource) {
               // $this->info($resource);

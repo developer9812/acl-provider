@@ -27,12 +27,17 @@ Route::get('/admin/oauth/clients', 'AdminController@getAllClients');
 Route::get('/admin/oauth/expiry', 'AdminController@getTokenExpiry');
 Route::post('/admin/oauth/expiry/update', 'AdminController@updateTokenExpiry');
 
+Route::get('/user', 'UserController@index');
+Route::get('/users', 'UserController@getUsers');
 Route::get('/user/roles', 'UserRoleController@index');
 Route::get('/user/roles/get', 'UserRoleController@getRoles');
 Route::post('/user/roles/create', 'UserRoleController@createRole');
 Route::post('/user/roles/permission/update', 'UserRoleController@updatePermissions');
 Route::get('/user/roles/permission', 'UserRoleController@getPermissions');
 Route::delete('/user/role/{role}', 'UserRoleController@deleteRole');
+Route::post('/user/role/set', 'UserController@setRole');
+Route::get('/user/{user}/role', 'UserController@getCurrentRole');
+Route::get('/user/permissions', 'Auth\PermissionController@getPermissions');
 
 Route::get('routes', function() {
     $routeCollection = Route::getRoutes();

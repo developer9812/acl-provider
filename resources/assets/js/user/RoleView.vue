@@ -7,6 +7,9 @@
         <button class="delete" aria-label="close" @click="closeView"></button>
       </header>
       <section class="modal-card-body">
+        <div v-if="showMessage" class="notification is-success">
+          <p v-if="message">{{ message }}</p>
+        </div>
         <nav class="level">
           <div class="level-left">
             <div class="level-item">
@@ -93,7 +96,9 @@ export default {
       permissions: [],
       rolePermissions: [],
       rolePermissionMap: {},
-      moreView: false
+      moreView: false,
+      showMessage: false,
+      message: "Changes have been saved successfully."
     }
   },
   created: function(){
@@ -136,6 +141,7 @@ export default {
         permissions: newPermissions
       }).then(response => {
         console.log(response);
+        this.displayMessage();
       }).catch(error => {
         console.log(error);
       });
@@ -155,6 +161,12 @@ export default {
         .catch(error => {
           console.log(error);
         })
+    },
+    displayMessage: function(){
+      this.showMessage = true;
+      setTimeout(() => {
+        this.showMessage = false;
+      }, 3000);
     },
     closeView: function(){
       this.viewRole = false;

@@ -12,6 +12,11 @@
       'edit-role',
       'add-role',
       'delete-role'
+    ],
+    'screens' => [
+      'view-home',
+      'view-about',
+      'view-contact'
     ]
   ]
 

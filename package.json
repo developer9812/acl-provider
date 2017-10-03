@@ -19,6 +19,7 @@
     "lodash": "^4.17.4",
     "vue": "^2.1.10",
     "vue-router": "^2.7.0",
+    "vue-select": "github:sagalbot/vue-select",
     "vuex": "^2.4.0"
   },
   "dependencies": {

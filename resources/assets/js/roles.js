@@ -13,6 +13,7 @@ var vm = new Vue({
     filteredRoles: []
   },
   created: function(){
+    console.log(this.testMessage);
     this.getRoles();
   },
   methods: {
