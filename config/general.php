@@ -1,7 +1,7 @@
 <?php
 
   return [
-    'passport_token_expiry' => 60
+    'oauth_token_expiry' => env('OAUTH_TOKEN_EXPIRY', 900)
   ]
 
  ?>
