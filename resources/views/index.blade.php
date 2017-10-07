@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="/css/main.css">
   </head>
   <body>
-
+    <div id="app">
+      @{{ message }}
+    </div>
+    <script type="text/javascript" src="{{ URL::asset('js/index.js') }}"></script>
   </body>
 </html>
