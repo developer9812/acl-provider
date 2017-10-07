@@ -1,5 +1,6 @@
 require ('../bootstrap.js');
 import UserView from './UserView.vue';
+import MenuView from '../components/Menu.vue';
 
 var vm = new Vue({
   el: '#app',
@@ -7,7 +8,8 @@ var vm = new Vue({
     users: [],
     userSearch: "",
     filteredUsers: [],
-    selectedUser: null
+    selectedUser: null,
+    showMenu: false
   },
   created: function() {
     this.getUsers();
@@ -47,9 +49,13 @@ var vm = new Vue({
     closeUserView: function(){
       this.selectedUser = null;
       this.getUsers();
+    },
+    toggleMenu: function(){
+      this.showMenu = !this.showMenu;
     }
   },
   components: {
-    'user-view': UserView
+    'user-view': UserView,
+    'menu-view': MenuView
   }
 })

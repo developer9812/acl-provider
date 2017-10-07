@@ -13895,6 +13895,12 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
+html,
+body,
+#app {
+  height: 100%;
+}
+
 .navbar {
   background-color: rgba(227, 74, 26, 0.88);
   color: white;
@@ -13912,5 +13918,36 @@ label.panel-block:hover {
 .navbar .navbar-item.nav-title {
   font-size: large;
   font-weight: 600;
+}
+
+.main-content {
+  height: calc(100% - 3.25rem);
+}
+
+.menu-contianer {
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.menu {
+  height: 100%;
+  padding: 1rem;
+  width: 200px;
+  -webkit-box-shadow: 0px 1px 6px 0px grey;
+          box-shadow: 0px 1px 6px 0px grey;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.slide-enter {
+  margin-left: -205px;
+}
+
+.slide-enter-to {
+  margin-left: 0;
+}
+
+.slide-leave-to {
+  margin-left: -205px;
 }
 

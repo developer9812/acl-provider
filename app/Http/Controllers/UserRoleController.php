@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -34,7 +35,7 @@ class UserRoleController extends Controller
     {
       return json_encode([
         'role_permissions' => Role::find($request->get('role'))->permissions()->get(),
-        'permissions' => Permission::all()
+        'permissions' => Auth::user()->getAllPermissions()
       ]);
     }
 

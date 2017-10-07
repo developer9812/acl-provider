@@ -1,5 +1,6 @@
 require('./bootstrap');
-import RoleView from './user/RoleView.vue'
+import RoleView from './user/RoleView.vue';
+import MenuView from './components/Menu.vue';
 
 var vm = new Vue({
   el: '#app',
@@ -10,7 +11,8 @@ var vm = new Vue({
     roles: [],
     selectedRole: null,
     roleSearch: '',
-    filteredRoles: []
+    filteredRoles: [],
+    showMenu: false
   },
   created: function(){
     console.log(this.testMessage);
@@ -66,9 +68,13 @@ var vm = new Vue({
     closeRoleView: function(){
       this.selectedRole = null;
       this.getRoles();
+    },
+    toggleMenu: function(){
+      this.showMenu = !this.showMenu;
     }
   },
   components: {
-    'role-view': RoleView
+    'role-view': RoleView,
+    'menu-view': MenuView
   }
 })

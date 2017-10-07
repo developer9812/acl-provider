@@ -15,7 +15,6 @@ class PermissionController extends Controller
           return $query->get(['id', 'name']);
         }
       ])->get());
-
       // return json_encode(Auth::user()->getAllPermissions());
     }
 }
