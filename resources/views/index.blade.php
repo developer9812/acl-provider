@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="app">
-      @{{ message }}
+      <router-view></router-view>
     </div>
     <script type="text/javascript" src="{{ URL::asset('js/index.js') }}"></script>
   </body>

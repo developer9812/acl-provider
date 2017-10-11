@@ -5,19 +5,22 @@
     </p>
     <ul class="menu-list">
       <li><a @click="redirect('/home')">Dashboard</a></li>
-      <li><a @click="redirect('/user')">Users</a></li>
-      <li><a @click="redirect('/user/roles')">Roles</a></li>
+      <li><router-link active-class="is-active" :to="{ name: 'users' }">Users</router-link></li>
+      <li><router-link active-class="is-active" :to="{ name: 'roles' }">Roles</router-link></li>
     </ul>
   </aside>
 </template>
 
 <script>
+import router from '../Routes';
+
 export default {
   data: function(){
     return {
       menuItems: []
     }
   },
+  router: router,
   created: function(){
     this.menuItems.push('Home');
     this.menuItems.push('User');
@@ -27,6 +30,9 @@ export default {
   methods: {
     redirect: function(path){
       location.href = path;
+    },
+    hasPermission: function(permission) {
+
     }
   }
 }

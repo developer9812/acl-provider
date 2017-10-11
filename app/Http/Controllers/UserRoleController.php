@@ -17,7 +17,9 @@ class UserRoleController extends Controller
 
     public function index()
     {
-      return view('user.roles');
+      return view('user.roles', [
+        'permissions' => Auth::user()->getAllPermissions()
+      ]);
     }
 
     public function createRole(Request $request)

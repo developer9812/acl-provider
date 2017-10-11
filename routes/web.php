@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('/ajax/login', 'Auth\LoginController@ajaxLogin');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/passport', 'Auth\PassportController@index');
@@ -27,11 +29,13 @@ Route::get('/admin/oauth/clients', 'AdminController@getAllClients');
 Route::get('/admin/oauth/expiry', 'AdminController@getTokenExpiry');
 Route::post('/admin/oauth/expiry/update', 'AdminController@updateTokenExpiry');
 
+Route::get('/ajax/acl', 'UserController@getRole');
+
 Route::get('/user', 'UserController@index');
 Route::get('/users', 'UserController@getUsers');
 Route::get('/user/roles', 'UserRoleController@index');
 Route::get('/user/roles/get', 'UserRoleController@getRoles');
-Route::post('/user/roles/create', 'UserRoleController@createRole');
+Route::post('/user/roles/create', 'UserRoleController@createRole')->middleware('can:add-role');
 Route::post('/user/roles/permission/update', 'UserRoleController@updatePermissions');
 Route::get('/user/roles/permission', 'UserRoleController@getPermissions');
 Route::delete('/user/role/{role}', 'UserRoleController@deleteRole');

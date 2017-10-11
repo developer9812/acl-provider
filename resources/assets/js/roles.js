@@ -16,6 +16,7 @@ var vm = new Vue({
   },
   created: function(){
     console.log(this.testMessage);
+    this.fetchACL();
     this.getRoles();
   },
   methods: {
@@ -71,6 +72,16 @@ var vm = new Vue({
     },
     toggleMenu: function(){
       this.showMenu = !this.showMenu;
+    },
+    fetchACL: function(){
+      axios.get('/ajax/acl')
+        .then( response => {
+          ACL = response.data;
+          console.log(response);
+        })
+        .catch( error => {
+          console.log(error);
+        })
     }
   },
   components: {

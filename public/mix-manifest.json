@@ -1,9 +1,9 @@
 {
+    "/js/user.js": "/js/user.js",
+    "/js/roles.js": "/js/roles.js",
+    "/js/index.js": "/js/index.js",
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/main.css": "/css/main.css",
-    "/js/user.js": "/js/user.js",
-    "/js/roles.js": "/js/roles.js",
-    "/js/main.js": "/js/main.js",
-    "/js/index.js": "/js/index.js"
+    "/js/main.js": "/js/main.js"
 }

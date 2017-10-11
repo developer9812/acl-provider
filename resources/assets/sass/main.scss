@@ -5,37 +5,52 @@
 
 $family-serif: "Merriweather", "Georgia", serif;
 
-// 3. Set the derived variables
-// Use the new pink as the primary color
 $primary: rgba(227, 74, 26, 0.88);
+// $primary: rgba(255, 77, 0, 0.85);
 $primary-invert: white;
-// Use the new serif family
+
 $family-primary: "Raleway", sans-serif;
 
 @import './node_modules/bulma/bulma.sass';
 
 $primary-color: rgba(227, 74, 26, 0.88);
+// $primary: rgba(255, 77, 0, 0.85);
 
-html, body, #app {
+html, body, #app, .app {
   height: 100%;
 }
 
-.navbar {
-  background-color: $primary;
-  color: white;
-  .navbar-item{
-    color: white;
-    &:hover{
-      color: white;
-      background-color: darken($primary, 10);
-    }
-    &.nav-title{
-      // font-family: "Raleway", sans-serif;
-      font-size: large;
-      font-weight: 600;
-    }
-  }
-}
+// .navbar {
+//   background-color: $primary;
+//   color: white;
+//   .navbar-item{
+//     color: white;
+//     &:hover{
+//       color: white;
+//       background-color: darken($primary, 10);
+//     }
+//     &.nav-title{
+//       // font-family: "Raleway", sans-serif;
+//       font-size: large;
+//       font-weight: 600;
+//     }
+//     .navbar-link{
+//       background-color: transparent;
+//       color: white;
+//       &:hover{
+//         background-color: darken($primary, 10);
+//       }
+//     }
+//     &.is-active{
+//       .navbar-link {
+//         background-color: darken($primary, 10);
+//       }
+//     }
+//   }
+//   .navbar-dropdown {
+//     background-color: $primary-color;
+//   }
+// }
 
 .main-content{
   height: calc(100% - 3.25rem);
@@ -50,6 +65,7 @@ html, body, #app {
   width: 200px;
   box-shadow: 0px 1px 6px 0px grey;
   transition: all .3s ease;
+  background: whitesmoke;
 }
 .slide-enter{
     margin-left: -205px;

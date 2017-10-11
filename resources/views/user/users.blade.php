@@ -25,51 +25,51 @@
         </div>
         <div class="column is-paddingless">
           <section class="section">
-          <nav class="level">
-            <div class="level-left">
-              <div class="level-item">
-                <div class="field has-addons">
-                  <p class="control">
-                    <input class="input" type="text" v-model="userSearch" placeholder="Find a user">
-                  </p>
-                  <p class="control">
-                    <button class="button" @click="filterUsers">
-                      Search
-                    </button>
-                  </p>
+            <nav class="level">
+              <div class="level-left">
+                <div class="level-item">
+                  <div class="field has-addons">
+                    <p class="control">
+                      <input class="input" type="text" v-model="userSearch" placeholder="Find a user">
+                    </p>
+                    <p class="control">
+                      <button class="button" @click="filterUsers">
+                        Search
+                      </button>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </nav>
-          <table class="table is-fullwidth">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Name</th>
-                <th>Email ID</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for='user in filteredUsers'>
-                <td>@{{ user.id }}</td>
-                <td>@{{ user.username }}</td>
-                <td>@{{ user.name }}</td>
-                <td>@{{ user.email }}</td>
-                <td><a href="#" class="button is-small" @click="selectedUser = user">View</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+            </nav>
+            <table class="table is-fullwidth">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Username</th>
+                  <th>Name</th>
+                  <th>Email ID</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for='user in filteredUsers'>
+                  <td>@{{ user.id }}</td>
+                  <td>@{{ user.username }}</td>
+                  <td>@{{ user.name }}</td>
+                  <td>@{{ user.email }}</td>
+                  <td><a href="#" class="button is-small" @click="selectedUser = user">View</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <user-view
+            :user="selectedUser"
+            :show-view="selectedUser != null"
+            v-if="selectedUser != null"
+            @close-user-view="closeUserView">
+          </user-view>
         </div>
       </div>
-      <user-view
-        :user="selectedUser"
-        :show-view="selectedUser != null"
-        v-if="selectedUser != null"
-        @close-user-view="closeUserView">
-      </user-view>
     </div>
     <script type="text/javascript" src="{{URL::asset('js/user.js')}}"></script>
   </body>
