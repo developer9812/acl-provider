@@ -1,7 +1,7 @@
 export default class Http {
   static request(requestType, url, data) {
     let resource = new Promise((resolve, reject) => {
-      axios.get(url, data)
+      axios[requestType](url, data)
         .then(response => {
           resolve(response);
         })

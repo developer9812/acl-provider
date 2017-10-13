@@ -12,7 +12,9 @@
           <div class="field">
             <!-- <label class="label">Username</label> -->
             <div class="control has-icons-left has-icons-right">
-              <input class="input" type="text" placeholder="Username/Email" v-model="form.username">
+              <input class="input" type="text" placeholder="Username/Email"
+                :class="{'is-danger': errors.hasOwnProperty('username')}"
+                v-model="form.username">
               <span class="icon is-small is-left">
                 <i class="fa fa-user"></i>
               </span>
@@ -20,11 +22,14 @@
                 <i class="fa fa-check"></i>
               </span> -->
             </div>
+            <p class="help is-danger" v-if="errors.hasOwnProperty('username')">{{ getError("username") }}</p>
           </div>
           <div class="field">
             <!-- <label class="label">Password</label> -->
             <div class="control has-icons-left has-icons-right">
-              <input class="input" type="password" placeholder="Password" v-model="form.password">
+              <input class="input" type="password" placeholder="Password"
+                :class="{'is-danger': errors.hasOwnProperty('password')}"
+                v-model="form.password">
               <span class="icon is-small is-left">
                 <i class="fa fa-lock"></i>
               </span>
@@ -32,19 +37,13 @@
                 <i class="fa fa-check"></i>
               </span> -->
             </div>
-          </div>
-          <div class="field">
-            <p class="control">
-              <button class="button is-fullwidth is-primary login-submit" @click="submit">
-                Log in
-              </button>
-            </p>
+            <p class="help is-danger" v-if="errors.hasOwnProperty('password')">{{ getError("password") }}</p>
           </div>
           <div class="field level">
             <div class="level-left">
               <p class="level-item">
                 <label class="checkbox">
-                  <input type="checkbox">
+                  <input type="checkbox" v-model="form.remember">
                   Remember me
                 </label>
               </p>
@@ -54,6 +53,16 @@
                 <a>Forgot Password ?</a>
               </p>
             </div>
+          </div>
+          <div class="field">
+            <p class="control">
+              <button class="button is-fullwidth is-primary login-submit" @click="submit">
+                Log in
+              </button>
+            </p>
+          </div>
+          <div v-if="error" class="notification is-danger">
+            <p>{{ message }}</p>
           </div>
         </div>
       </div>
@@ -68,11 +77,19 @@ export default {
       form: {
         username: "",
         password: "",
-        remember: true
-      }
+        remember: true,
+      },
+      message: '',
+      error: false,
+      errors: []
     }
   },
   methods: {
+    getError: function(field) {
+      if (this.errors[field]) {
+        return this.errors[field][0];
+      }
+    },
     submit: function(){
       axios.post('/login', this.form)
       .then(response => {
@@ -82,8 +99,26 @@ export default {
       })
       .catch(error => {
         console.log("ERROR");
+        this.setError(error);
         console.log(error);
       })
+    },
+    setError: function(error){
+      this.message = error.response.data.message;
+      this.errors = error.response.data.errors;
+      this.error = true;
+      setTimeout(() => {
+        this.error = false;
+      }, 5000);
+    }
+  },
+  watch: {
+    form: {
+      handler: function(){
+        this.errors = [];
+        this.error = false;
+      },
+      deep: true
     }
   }
 }
@@ -106,7 +141,7 @@ export default {
     }
   }
   .login-form{
-    margin-top: 5rem;
+    margin-top: 3rem;
     background-color: white;
     box-shadow: 0px 0px 8px 0px grey;
     border-radius: 3px;

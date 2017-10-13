@@ -32412,6 +32412,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+/**
+ * Service for Authentication Helper
+ */
 var Auth = function () {
   function Auth() {
     _classCallCheck(this, Auth);
@@ -32419,6 +32422,12 @@ var Auth = function () {
 
   _createClass(Auth, null, [{
     key: "isAuthenticated",
+
+
+    /**
+     * Checks authentication status
+     * @return {Boolean}
+     */
     value: function isAuthenticated() {
       return new Promise(function (resolve, reject) {
         axios.get('/api/user/status').then(function (response) {
@@ -34474,7 +34483,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n#page-background {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: url(" + __webpack_require__(82) + ");\n  background-repeat: no-repeat;\n  padding: 1rem;\n}\n#page-background .image img {\n    margin: 20px auto;\n    width: 300px;\n}\n#page-background .login-form {\n    margin-top: 5rem;\n    background-color: white;\n    box-shadow: 0px 0px 8px 0px grey;\n    border-radius: 3px;\n}\n#page-background .login-form .field {\n      margin-top: 1.5rem;\n}\n#page-background .login-form .field .login-submit {\n        text-transform: uppercase;\n        font-weight: 600;\n}\n", ""]);
+exports.push([module.i, "\n#page-background {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-image: url(" + __webpack_require__(82) + ");\n  background-repeat: no-repeat;\n  padding: 1rem;\n}\n#page-background .image img {\n    margin: 20px auto;\n    width: 300px;\n}\n#page-background .login-form {\n    margin-top: 3rem;\n    background-color: white;\n    box-shadow: 0px 0px 8px 0px grey;\n    border-radius: 3px;\n}\n#page-background .login-form .field {\n      margin-top: 1.5rem;\n}\n#page-background .login-form .field .login-submit {\n        text-transform: uppercase;\n        font-weight: 600;\n}\n", ""]);
 
 // exports
 
@@ -34554,6 +34563,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -34562,10 +34580,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         username: "",
         password: "",
         remember: true
-      }
+      },
+      message: '',
+      error: false,
+      errors: []
     };
   },
   methods: {
+    getError: function getError(field) {
+      if (this.errors[field]) {
+        return this.errors[field][0];
+      }
+    },
     submit: function submit() {
       var _this = this;
 
@@ -34575,8 +34601,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.$router.push('/');
       }).catch(function (error) {
         console.log("ERROR");
+        _this.setError(error);
         console.log(error);
       });
+    },
+    setError: function setError(error) {
+      var _this2 = this;
+
+      this.message = error.response.data.message;
+      this.errors = error.response.data.errors;
+      this.error = true;
+      setTimeout(function () {
+        _this2.error = false;
+      }, 5000);
+    }
+  },
+  watch: {
+    form: {
+      handler: function handler() {
+        this.errors = [];
+        this.error = false;
+      },
+      deep: true
     }
   }
 });
@@ -34608,6 +34654,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "form.username"
     }],
     staticClass: "input",
+    class: {
+      'is-danger': _vm.errors.hasOwnProperty('username')
+    },
     attrs: {
       "type": "text",
       "placeholder": "Username/Email"
@@ -34621,7 +34670,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.form.username = $event.target.value
       }
     }
-  }), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _vm._m(1)]), _vm._v(" "), (_vm.errors.hasOwnProperty('username')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.getError("username")))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "field"
   }, [_c('div', {
     staticClass: "control has-icons-left has-icons-right"
@@ -34633,6 +34684,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "form.password"
     }],
     staticClass: "input",
+    class: {
+      'is-danger': _vm.errors.hasOwnProperty('password')
+    },
     attrs: {
       "type": "password",
       "placeholder": "Password"
@@ -34646,7 +34700,48 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.form.password = $event.target.value
       }
     }
-  }), _vm._v(" "), _vm._m(2)])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _vm._m(2)]), _vm._v(" "), (_vm.errors.hasOwnProperty('password')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.getError("password")))]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "field level"
+  }, [_c('div', {
+    staticClass: "level-left"
+  }, [_c('p', {
+    staticClass: "level-item"
+  }, [_c('label', {
+    staticClass: "checkbox"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.remember),
+      expression: "form.remember"
+    }],
+    attrs: {
+      "type": "checkbox"
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.form.remember) ? _vm._i(_vm.form.remember, null) > -1 : (_vm.form.remember)
+    },
+    on: {
+      "__c": function($event) {
+        var $$a = _vm.form.remember,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.form.remember = $$a.concat([$$v]))
+          } else {
+            $$i > -1 && (_vm.form.remember = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.form.remember = $$c
+        }
+      }
+    }
+  }), _vm._v("\n                Remember me\n              ")])])]), _vm._v(" "), _vm._m(3)]), _vm._v(" "), _c('div', {
     staticClass: "field"
   }, [_c('p', {
     staticClass: "control"
@@ -34655,7 +34750,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.submit
     }
-  }, [_vm._v("\n              Log in\n            ")])])]), _vm._v(" "), _vm._m(3)])])])])
+  }, [_vm._v("\n              Log in\n            ")])])]), _vm._v(" "), (_vm.error) ? _c('div', {
+    staticClass: "notification is-danger"
+  }, [_c('p', [_vm._v(_vm._s(_vm.message))])]) : _vm._e()])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('picture', {
     staticClass: "image"
@@ -34678,22 +34775,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "field level"
-  }, [_c('div', {
-    staticClass: "level-left"
-  }, [_c('p', {
-    staticClass: "level-item"
-  }, [_c('label', {
-    staticClass: "checkbox"
-  }, [_c('input', {
-    attrs: {
-      "type": "checkbox"
-    }
-  }), _vm._v("\n                Remember me\n              ")])])]), _vm._v(" "), _c('div', {
     staticClass: "level-right"
   }, [_c('p', {
     staticClass: "level-item"
-  }, [_c('a', [_vm._v("Forgot Password ?")])])])])
+  }, [_c('a', [_vm._v("Forgot Password ?")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -34870,7 +34955,7 @@ var Http = function () {
     key: "request",
     value: function request(requestType, url, data) {
       var resource = new Promise(function (resolve, reject) {
-        axios.get(url, data).then(function (response) {
+        axios[requestType](url, data).then(function (response) {
           resolve(response);
         }).catch(function (error) {
           console.log("ERROR");

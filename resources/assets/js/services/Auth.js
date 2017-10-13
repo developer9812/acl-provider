@@ -1,4 +1,13 @@
+
+/**
+ * Service for Authentication Helper
+ */
 export default class Auth {
+
+  /**
+   * Checks authentication status
+   * @return {Boolean}
+   */
   static isAuthenticated(){
     return new Promise((resolve, reject) => {
       axios.get('/api/user/status')
