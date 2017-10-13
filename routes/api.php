@@ -19,3 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/users', 'UserController@getUsers')->middleware('auth:api');
 Route::get('/user/role', 'Auth\PermissionController@getPermissions')->middleware('auth:api');
+
+Route::get('/user/status', 'UserController@getStatus')->middleware('auth:api');

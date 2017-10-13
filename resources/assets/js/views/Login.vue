@@ -16,9 +16,9 @@
               <span class="icon is-small is-left">
                 <i class="fa fa-user"></i>
               </span>
-              <span class="icon is-small is-right">
+              <!-- <span class="icon is-small is-right">
                 <i class="fa fa-check"></i>
-              </span>
+              </span> -->
             </div>
           </div>
           <div class="field">
@@ -28,16 +28,16 @@
               <span class="icon is-small is-left">
                 <i class="fa fa-lock"></i>
               </span>
-              <span class="icon is-small is-right">
+              <!-- <span class="icon is-small is-right">
                 <i class="fa fa-check"></i>
-              </span>
+              </span> -->
             </div>
           </div>
           <div class="field">
             <p class="control">
-              <a class="button is-block is-primary login-submit" @click="submit">
+              <button class="button is-fullwidth is-primary login-submit" @click="submit">
                 Log in
-              </a>
+              </button>
             </p>
           </div>
           <div class="field level">
@@ -51,7 +51,7 @@
             </div>
             <div class="level-right">
               <p class="level-item">
-                <a href="#">Forgot Password ?</a>
+                <a>Forgot Password ?</a>
               </p>
             </div>
           </div>
@@ -67,7 +67,8 @@ export default {
     return {
       form: {
         username: "",
-        password: ""
+        password: "",
+        remember: true
       }
     }
   },
@@ -75,9 +76,9 @@ export default {
     submit: function(){
       axios.post('/login', this.form)
       .then(response => {
-        console.log("RESPONSE");
+        console.log("MAIN RESPONSE");
         console.log(response);
-        this.$router.push();
+        this.$router.push('/');
       })
       .catch(error => {
         console.log("ERROR");

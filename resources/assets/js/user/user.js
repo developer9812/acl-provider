@@ -27,7 +27,7 @@ var vm = new Vue({
         .catch(error => {
           console.log("Error while fetching users");
           console.log(error);
-        })
+        });
     },
     filterUsers: function(){
       if (this.userSearch.length > 0) {

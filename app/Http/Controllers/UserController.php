@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -45,5 +46,13 @@ class UserController extends Controller
     {
       $role = $user->roles()->first();
       return json_encode($role);
+    }
+
+    public function getStatus()
+    {
+      Log::info(Auth::user()->username);
+      return json_encode([
+        'status' => Auth::check()
+      ]);
     }
 }

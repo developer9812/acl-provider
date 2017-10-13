@@ -32,15 +32,17 @@ export default {
       this.showMenu = !this.showMenu;
     },
     logout: function(){
-      this.$router.push('/login');
       axios.post('/logout')
         .then(response => {
-          console.log("RESPONSE");
+          console.log("MAIN RESPONSE");
           console.log(response);
+          location.reload();
+          this.$router.push('/login');
         })
         .catch(error => {
           console.log("ERROR");
           console.log(error);
+          location.reload();
         })
     }
   },

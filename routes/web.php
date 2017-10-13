@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', 'HomeController@index');
+// Route::get('/user/status', 'Auth\LoginController@authStatus');
+
 Auth::routes();
 
 Route::post('/ajax/login', 'Auth\LoginController@ajaxLogin');
