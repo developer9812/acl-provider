@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
+use App\Models\Role;
+use App\Helpers\RoleFlatMap;
 use Spatie\Permission\Models\Permission;
 
 class UserRoleController extends Controller
@@ -24,13 +25,41 @@ class UserRoleController extends Controller
 
     public function createRole(Request $request)
     {
-      $role = Role::create( ['name' => $request->get('role_name')]);
+      $role = new Role();
+      $role->name = $request->get('role_name');
+      if ($request->has('parent_role')) {
+        $role->parent()->associate(Role::whereName($request->get('parent_role'))->first());
+      } else {
+        $role->parent()->associate(Auth::user()->roles()->first());
+      }
+      $role->owner()->associate(Auth::user());
+      $role->save();
       return json_encode($role);
     }
 
     public function getRoles(Request $request)
     {
-      return json_encode(Role::all());
+      // if (Auth::user()->hasRole('admin'))
+      // {
+      //   return json_encode(Role::all());
+      // }
+      // else
+      // {
+      // }
+      $role = Auth::user()->roles()->first()->load('children');
+      $roleMap = new RoleFlatMap($role->children);
+      return json_encode( $roleMap->getRoles());
+    }
+
+    public function flatten($role)
+    {
+      $result = [];
+      array_push($role);
+      if (is_iterable($role->children)) {
+        foreach ($role as $role) {
+          # code...
+        }
+      }
     }
 
     public function getPermissions(Request $request)

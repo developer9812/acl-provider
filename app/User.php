@@ -34,4 +34,10 @@ class User extends Authenticatable
                     ->orWhere('username', $identifier)
                     ->first();
     }
+
+    public function roleOwner()
+    {
+      return $this->hasMany('App\Models\RoleOwner');
+    }
+
 }

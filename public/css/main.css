@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@import url(https://fonts.googleapis.com/css?family=Ubuntu);@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);@charset "UTF-8";
 
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -3198,7 +3198,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Raleway", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 code,
@@ -4902,20 +4902,20 @@ a.box:active {
 .button.is-primary {
   background-color: rgba(227, 74, 26, 0.88);
   border-color: transparent;
-  color: white;
+  color: whitesmoke;
 }
 
 .button.is-primary:hover,
 .button.is-primary.is-hovered {
   background-color: rgba(216, 70, 25, 0.88);
   border-color: transparent;
-  color: white;
+  color: whitesmoke;
 }
 
 .button.is-primary:focus,
 .button.is-primary.is-focused {
   border-color: transparent;
-  color: white;
+  color: whitesmoke;
 }
 
 .button.is-primary:focus:not(:active),
@@ -4928,7 +4928,7 @@ a.box:active {
 .button.is-primary.is-active {
   background-color: rgba(204, 67, 23, 0.88);
   border-color: transparent;
-  color: white;
+  color: whitesmoke;
 }
 
 .button.is-primary[disabled] {
@@ -4939,16 +4939,16 @@ a.box:active {
 }
 
 .button.is-primary.is-inverted {
-  background-color: white;
+  background-color: whitesmoke;
   color: rgba(227, 74, 26, 0.88);
 }
 
 .button.is-primary.is-inverted:hover {
-  background-color: #f2f2f2;
+  background-color: #e8e8e8;
 }
 
 .button.is-primary.is-inverted[disabled] {
-  background-color: white;
+  background-color: whitesmoke;
   border-color: transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -4956,7 +4956,7 @@ a.box:active {
 }
 
 .button.is-primary.is-loading:after {
-  border-color: transparent transparent white white !important;
+  border-color: transparent transparent whitesmoke whitesmoke !important;
 }
 
 .button.is-primary.is-outlined {
@@ -4969,7 +4969,7 @@ a.box:active {
 .button.is-primary.is-outlined:focus {
   background-color: rgba(227, 74, 26, 0.88);
   border-color: rgba(227, 74, 26, 0.88);
-  color: white;
+  color: whitesmoke;
 }
 
 .button.is-primary.is-outlined.is-loading:after {
@@ -4986,22 +4986,22 @@ a.box:active {
 
 .button.is-primary.is-inverted.is-outlined {
   background-color: transparent;
-  border-color: white;
-  color: white;
+  border-color: whitesmoke;
+  color: whitesmoke;
 }
 
 .button.is-primary.is-inverted.is-outlined:hover,
 .button.is-primary.is-inverted.is-outlined:focus {
-  background-color: white;
+  background-color: whitesmoke;
   color: rgba(227, 74, 26, 0.88);
 }
 
 .button.is-primary.is-inverted.is-outlined[disabled] {
   background-color: transparent;
-  border-color: white;
+  border-color: whitesmoke;
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: white;
+  color: whitesmoke;
 }
 
 .button.is-info {
@@ -6504,14 +6504,14 @@ a.box:active {
 .file.is-primary .file-cta {
   background-color: rgba(227, 74, 26, 0.88);
   border-color: transparent;
-  color: white;
+  color: whitesmoke;
 }
 
 .file.is-primary:hover .file-cta,
 .file.is-primary.is-hovered .file-cta {
   background-color: rgba(216, 70, 25, 0.88);
   border-color: transparent;
-  color: white;
+  color: whitesmoke;
 }
 
 .file.is-primary:focus .file-cta,
@@ -6519,14 +6519,14 @@ a.box:active {
   border-color: transparent;
   -webkit-box-shadow: 0 0 0.5em rgba(227, 74, 26, 0.25);
           box-shadow: 0 0 0.5em rgba(227, 74, 26, 0.25);
-  color: white;
+  color: whitesmoke;
 }
 
 .file.is-primary:active .file-cta,
 .file.is-primary.is-active .file-cta {
   background-color: rgba(204, 67, 23, 0.88);
   border-color: transparent;
-  color: white;
+  color: whitesmoke;
 }
 
 .file.is-info .file-cta {
@@ -7504,7 +7504,7 @@ a.box:active {
 
 .notification.is-primary {
   background-color: rgba(227, 74, 26, 0.88);
-  color: white;
+  color: whitesmoke;
 }
 
 .notification.is-info {
@@ -7685,7 +7685,7 @@ a.box:active {
 .table th.is-primary {
   background-color: rgba(227, 74, 26, 0.88);
   border-color: rgba(227, 74, 26, 0.88);
-  color: white;
+  color: whitesmoke;
 }
 
 .table td.is-info,
@@ -7733,7 +7733,7 @@ a.box:active {
 
 .table tr.is-selected {
   background-color: rgba(227, 74, 26, 0.88);
-  color: white;
+  color: whitesmoke;
 }
 
 .table tr.is-selected a,
@@ -7743,7 +7743,7 @@ a.box:active {
 
 .table tr.is-selected td,
 .table tr.is-selected th {
-  border-color: white;
+  border-color: whitesmoke;
   color: currentColor;
 }
 
@@ -7883,7 +7883,7 @@ a.box:active {
 
 .tag:not(body).is-primary {
   background-color: rgba(227, 74, 26, 0.88);
-  color: white;
+  color: whitesmoke;
 }
 
 .tag:not(body).is-info {
@@ -8521,7 +8521,7 @@ a.dropdown-item:hover {
 
 a.dropdown-item.is-active {
   background-color: rgba(227, 74, 26, 0.88);
-  color: white;
+  color: whitesmoke;
 }
 
 .dropdown-divider {
@@ -8800,7 +8800,7 @@ a.dropdown-item.is-active {
 
 .menu-list a.is-active {
   background-color: rgba(227, 74, 26, 0.88);
-  color: white;
+  color: whitesmoke;
 }
 
 .menu-list li ul {
@@ -8917,7 +8917,7 @@ a.dropdown-item.is-active {
 
 .message.is-primary .message-header {
   background-color: rgba(227, 74, 26, 0.88);
-  color: white;
+  color: whitesmoke;
 }
 
 .message.is-primary .message-body {
@@ -9760,12 +9760,12 @@ a.nav-item:not(.button).is-tab.is-active {
 
 .navbar.is-primary {
   background-color: rgba(227, 74, 26, 0.88);
-  color: white;
+  color: whitesmoke;
 }
 
 .navbar.is-primary .navbar-brand > .navbar-item,
 .navbar.is-primary .navbar-brand .navbar-link {
-  color: white;
+  color: whitesmoke;
 }
 
 .navbar.is-primary .navbar-brand > a.navbar-item:hover,
@@ -9773,11 +9773,11 @@ a.nav-item:not(.button).is-tab.is-active {
 .navbar.is-primary .navbar-brand .navbar-link:hover,
 .navbar.is-primary .navbar-brand .navbar-link.is-active {
   background-color: rgba(204, 67, 23, 0.88);
-  color: white;
+  color: whitesmoke;
 }
 
 .navbar.is-primary .navbar-brand .navbar-link::after {
-  border-color: white;
+  border-color: whitesmoke;
 }
 
 @media screen and (min-width: 1024px) {
@@ -9785,7 +9785,7 @@ a.nav-item:not(.button).is-tab.is-active {
   .navbar.is-primary .navbar-start .navbar-link,
   .navbar.is-primary .navbar-end > .navbar-item,
   .navbar.is-primary .navbar-end .navbar-link {
-    color: white;
+    color: whitesmoke;
   }
 
   .navbar.is-primary .navbar-start > a.navbar-item:hover,
@@ -9797,23 +9797,23 @@ a.nav-item:not(.button).is-tab.is-active {
   .navbar.is-primary .navbar-end .navbar-link:hover,
   .navbar.is-primary .navbar-end .navbar-link.is-active {
     background-color: rgba(204, 67, 23, 0.88);
-    color: white;
+    color: whitesmoke;
   }
 
   .navbar.is-primary .navbar-start .navbar-link::after,
   .navbar.is-primary .navbar-end .navbar-link::after {
-    border-color: white;
+    border-color: whitesmoke;
   }
 
   .navbar.is-primary .navbar-item.has-dropdown:hover .navbar-link,
   .navbar.is-primary .navbar-item.has-dropdown.is-active .navbar-link {
     background-color: rgba(204, 67, 23, 0.88);
-    color: white;
+    color: whitesmoke;
   }
 
   .navbar.is-primary .navbar-dropdown a.navbar-item.is-active {
     background-color: rgba(227, 74, 26, 0.88);
-    color: white;
+    color: whitesmoke;
   }
 }
 
@@ -10612,7 +10612,7 @@ a.navbar-item.is-active,
 .pagination-link.is-current {
   background-color: rgba(227, 74, 26, 0.88);
   border-color: rgba(227, 74, 26, 0.88);
-  color: white;
+  color: whitesmoke;
 }
 
 .pagination-ellipsis {
@@ -11031,7 +11031,7 @@ label.panel-block:hover {
 .tabs.is-toggle li.is-active a {
   background-color: rgba(227, 74, 26, 0.88);
   border-color: rgba(227, 74, 26, 0.88);
-  color: white;
+  color: whitesmoke;
   z-index: 1;
 }
 
@@ -13224,7 +13224,7 @@ label.panel-block:hover {
 
 .hero.is-primary {
   background-color: rgba(227, 74, 26, 0.88);
-  color: white;
+  color: whitesmoke;
 }
 
 .hero.is-primary a:not(.button),
@@ -13233,21 +13233,21 @@ label.panel-block:hover {
 }
 
 .hero.is-primary .title {
-  color: white;
+  color: whitesmoke;
 }
 
 .hero.is-primary .subtitle {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(245, 245, 245, 0.9);
 }
 
 .hero.is-primary .subtitle a:not(.button),
 .hero.is-primary .subtitle strong {
-  color: white;
+  color: whitesmoke;
 }
 
 .hero.is-primary .nav {
-  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
-          box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: 0 1px 0 rgba(245, 245, 245, 0.2);
+          box-shadow: 0 1px 0 rgba(245, 245, 245, 0.2);
 }
 
 @media screen and (max-width: 768px) {
@@ -13258,18 +13258,18 @@ label.panel-block:hover {
 
 .hero.is-primary a.nav-item,
 .hero.is-primary .nav-item a:not(.button) {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(245, 245, 245, 0.7);
 }
 
 .hero.is-primary a.nav-item:hover,
 .hero.is-primary a.nav-item.is-active,
 .hero.is-primary .nav-item a:not(.button):hover,
 .hero.is-primary .nav-item a:not(.button).is-active {
-  color: white;
+  color: whitesmoke;
 }
 
 .hero.is-primary .tabs a {
-  color: white;
+  color: whitesmoke;
   opacity: 0.9;
 }
 
@@ -13283,7 +13283,7 @@ label.panel-block:hover {
 
 .hero.is-primary .tabs.is-boxed a,
 .hero.is-primary .tabs.is-toggle a {
-  color: white;
+  color: whitesmoke;
 }
 
 .hero.is-primary .tabs.is-boxed a:hover,
@@ -13295,8 +13295,8 @@ label.panel-block:hover {
 .hero.is-primary .tabs.is-boxed li.is-active a:hover,
 .hero.is-primary .tabs.is-toggle li.is-active a,
 .hero.is-primary .tabs.is-toggle li.is-active a:hover {
-  background-color: white;
-  border-color: white;
+  background-color: whitesmoke;
+  border-color: whitesmoke;
   color: rgba(227, 74, 26, 0.88);
 }
 
@@ -13312,7 +13312,7 @@ label.panel-block:hover {
 
 @media screen and (max-width: 768px) {
   .hero.is-primary .nav-toggle span {
-    background-color: white;
+    background-color: whitesmoke;
   }
 
   .hero.is-primary .nav-toggle:hover {
@@ -13320,11 +13320,11 @@ label.panel-block:hover {
   }
 
   .hero.is-primary .nav-toggle.is-active span {
-    background-color: white;
+    background-color: whitesmoke;
   }
 
   .hero.is-primary .nav-menu .nav-item {
-    border-top-color: rgba(255, 255, 255, 0.2);
+    border-top-color: rgba(245, 245, 245, 0.2);
   }
 }
 
@@ -13918,7 +13918,18 @@ body,
           box-shadow: 0px 1px 6px 0px grey;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
+}
+
+.menu .menu-list a {
+  border-left: 0.3rem solid white;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.menu .menu-list .is-active {
+  color: rgba(227, 74, 26, 0.88);
   background: whitesmoke;
+  border-left: 0.3rem solid rgba(227, 74, 26, 0.88);
 }
 
 .slide-enter {

@@ -1,15 +1,20 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 @import "./node_modules/font-awesome/scss/font-awesome.scss";
 @import "./node_modules/bulma/sass/utilities/initial-variables";
 
 $family-serif: "Merriweather", "Georgia", serif;
 
 $primary: rgba(227, 74, 26, 0.88);
+// $primary: rgb(64, 83, 161);
 // $primary: rgba(255, 77, 0, 0.85);
-$primary-invert: white;
+$primary-invert: whitesmoke;
 
-$family-primary: "Raleway", sans-serif;
+// $family-primary: "Raleway", sans-serif;
+// $family-primary: 'Ubuntu', sans-serif;
+$family-primary: 'Source Sans Pro', sans-serif;
 
 @import './node_modules/bulma/bulma.sass';
 
@@ -65,7 +70,18 @@ html, body, #app, .app {
   width: 200px;
   box-shadow: 0px 1px 6px 0px grey;
   transition: all .3s ease;
-  background: whitesmoke;
+  // background: whitesmoke;
+    .menu-list {
+      a{
+        border-left: 0.3rem solid white;
+        transition: all 0.2s ease;
+      }
+      .is-active{
+        color: $primary;
+        background: whitesmoke;
+        border-left: 0.3rem solid $primary;
+      }
+    }
 }
 .slide-enter{
     margin-left: -205px;

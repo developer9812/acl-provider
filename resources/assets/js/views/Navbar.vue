@@ -21,7 +21,7 @@
               <span class="icon is-left">
                 <i class="fa fa-cog"></i>
               </span>
-              <span>Account Settings</span>
+              <span>Settings</span>
             </a>
             <hr class="navbar-divider">
             <a class="navbar-item" @click="logout">

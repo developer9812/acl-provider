@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Helpers\RoleFlatMap;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Log;
 
@@ -17,7 +18,16 @@ class UserController extends Controller
 
     public function getUsers()
     {
-      return json_encode(User::all());
+      if ( Auth::user()->hasAnyPermission( config('permissionmap.role') ) )
+      {
+        return json_encode(User::all());
+      }
+      else
+      {
+        $role = Auth::user()->roles()->first()->load('children');
+        $roleMap = new RoleFlatMap($role->children);
+        return json_encode(User::role($roleMap->getRoles())->get());
+      }
     }
 
     public function index()
