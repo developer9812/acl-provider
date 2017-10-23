@@ -37,29 +37,11 @@ class UserRoleController extends Controller
       return json_encode($role);
     }
 
-    public function getRoles(Request $request)
+    public    function getRoles(Request $request)
     {
-      // if (Auth::user()->hasRole('admin'))
-      // {
-      //   return json_encode(Role::all());
-      // }
-      // else
-      // {
-      // }
-      $role = Auth::user()->roles()->first()->load('children');
-      $roleMap = new RoleFlatMap($role->children);
+      $role = Auth::user()->roles()->get()->load('children');
+      $roleMap = new RoleFlatMap($role, Auth::user()->roles()->get()->pluck('name')->toArray() );
       return json_encode( $roleMap->getRoles());
-    }
-
-    public function flatten($role)
-    {
-      $result = [];
-      array_push($role);
-      if (is_iterable($role->children)) {
-        foreach ($role as $role) {
-          # code...
-        }
-      }
     }
 
     public function getPermissions(Request $request)
