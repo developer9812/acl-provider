@@ -3,7 +3,6 @@
 /public/storage
 /storage/*.key
 /storage
-/storage/requests.log
 /vendor
 /.idea
 /.vagrant

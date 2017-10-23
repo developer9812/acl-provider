@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\User;
+use App\Models\Role;
 
 class RegisterAdmin extends Command
 {
@@ -39,9 +41,32 @@ class RegisterAdmin extends Command
     {
         $admin = [];
         $admin['name'] = $this->ask('Name of Admin');
-        $admin['username'] = $this->ask('Enter a username');
-        $admin['password'] = $this->secret("Enter Password");
+        $admin['username'] = $this->ask('Enter a username. (Min 5 chars)');
+        $admin['password'] = $this->secret("Enter Password. (Min 8 chars)");
         $admin['email'] = $this->ask('Provide an email address');
-        var_dump($admin);
+
+        $roles = Role::all(['name'])->pluck('name')->toArray();
+        $defaultRole = null;
+        if (array_search('admin', $roles) === false) {
+          $defaultRole = array_search('admin', $roles);
+        }
+        $admin['role'] = $this->choice('Select Role', $roles, $defaultRole);
+
+        if (strlen($admin['username']) <= 4) {
+          $this->error("Username must be atleast 5 character long");
+          return;
+        } elseif (strlen($admin['password']) <= 7) {
+          $this->error("Password is too short. Atleast 8 chars are required");
+          return;
+        }
+
+        $user = new User();
+        $user->username = $admin['username'];
+        $user->name = $admin['name'];
+        $user->password = bcrypt($admin['password']);
+        $user->email = $admin['email'];
+        $user->save();
+        $user->assignRole('admin');
+        $this->info("Admin User Created Successfully with all permissions");
     }
 }
