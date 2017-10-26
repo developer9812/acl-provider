@@ -39,8 +39,12 @@ class UserRoleController extends Controller
 
     public    function getRoles(Request $request)
     {
-      $role = Auth::user()->roles()->get()->load('children');
-      $roleMap = new RoleFlatMap($role, Auth::user()->roles()->get()->pluck('name')->toArray() );
+      $role = Auth::user()->roles()->get()->load([
+        'children' => function($query){
+          return $query->with(['parent', 'owner']);
+        }
+      ]);
+      $roleMap = new RoleFlatMap($role, Auth::user()->roles()->get() );
       return json_encode( $roleMap->getRoles());
     }
 

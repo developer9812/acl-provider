@@ -20,7 +20,11 @@ class Role extends \Spatie\Permission\Models\Role
 
   public function children()
   {
-    return $this->hasMany('App\Models\Role', 'parent_id')->with('children');
+    return $this->hasMany('App\Models\Role', 'parent_id')->with([
+      'children' => function($query){
+        return $query->with(['parent', 'owner']);
+      }
+    ]);
   }
 
 }

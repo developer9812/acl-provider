@@ -27,8 +27,8 @@
           <tr>
             <th>Role ID</th>
             <th>Role Name</th>
-            <th>Created At</th>
-            <th>Updated At</th>
+            <th>Parent Role</th>
+            <th>Created By</th>
             <th></th>
           </tr>
         </thead>
@@ -36,8 +36,8 @@
           <tr v-for='role in filteredRoles'>
             <td>{{ role.id }}</td>
             <td>{{ role.name }}</td>
-            <td>{{ role.created_at }}</td>
-            <td>{{ role.updated_at }}</td>
+            <td>{{ role.parent ? role.parent.name : 'N/A' }}</td>
+            <td>{{ role.owner ? role.owner.name : 'N/A' }}</td>
             <td><a class="button is-small" @click="selectedRole = role">View</a></td>
           </tr>
         </tbody>
@@ -46,7 +46,9 @@
 
     <role-view :role="selectedRole" :show="selectedRole != null" v-if="selectedRole != null" @close-role-view="closeRoleView"></role-view>
 
-    <div class="modal" :class="{'is-active': newRole}">
+    <create-role v-if="newRole" :roles="roles" @close-view="closeCreateRole"></create-role>
+
+    <!-- <div class="modal" :class="{'is-active': newRole}">
       <div class="modal-background" @click="newRole = false"></div>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -61,18 +63,57 @@
             </div>
             <p class="help is-danger" v-if="error">Enter a valid name</p>
           </div>
+          <hr>
+          <div class="field">
+            <label class="label">Define a Parent Role</label>
+          </div>
+          <div class="columns">
+            <div class="column">
+              <div class="field">
+                <label class="label"><a class="button is-link">From own roles</a></label>
+                <div class="control">
+                  <v-select
+                    v-model="newRoleParent"
+                    label="name"
+                    placeholder="Select a Role"
+                    maxHeight='4rem'
+                    :options="roles">
+                  </v-select>
+                </div>
+              </div>
+            </div>
+            <div class="column is-2">
+              OR
+            </div>
+            <div class="column">
+              <div class="field">
+                <label class="label"><a class="button is-link">From other roles</a></label>
+                <div class="control">
+                  <v-select
+                    v-model="newRoleParent"
+                    label="name"
+                    placeholder="Select a Role"
+                    maxHeight='4rem'
+                    :options="roles">
+                  </v-select>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
         <footer class="modal-card-foot">
           <button class="button is-success" @click="saveRole">Save changes</button>
           <button class="button" @click="newRole = false">Cancel</button>
         </footer>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import RoleView from './RoleView.vue'
+import RoleView from './RoleView.vue';
+import CreateRole from './CreateRole.vue';
+import vSelect from "vue-select";
 
 export default {
   data: function() {
@@ -83,12 +124,12 @@ export default {
       roles: [],
       selectedRole: null,
       roleSearch: '',
-      filteredRoles: []
+      filteredRoles: [],
+      newRoleParent: null
     }
   },
   created: function(){
     console.log(this.testMessage);
-    this.fetchACL();
     this.getRoles();
   },
   methods: {
@@ -142,22 +183,21 @@ export default {
       this.selectedRole = null;
       this.getRoles();
     },
-    fetchACL: function(){
-      axios.get('/ajax/acl')
-        .then( response => {
-          ACL = response.data;
-          console.log(response);
-        })
-        .catch( error => {
-          console.log(error);
-        })
+    closeCreateRole: function(){
+      this.newRole = false;
+      this.getRoles();
     }
   },
   components: {
-    'role-view': RoleView
+    'v-select': vSelect,
+    'role-view': RoleView,
+    'create-role': CreateRole
   }
 }
 </script>
 
 <style lang="scss">
+  .modal-card-body{
+    padding-bottom: 5rem;
+  }
 </style>

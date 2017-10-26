@@ -49,6 +49,7 @@ class UserController extends Controller
       $role = Role::find($request->get('role'));
       $user = User::find($request->get('user'));
       $user->syncRoles([$role->name]);
+      event('auth.logout', [$user]);
       return json_encode($user->roles()->get());
     }
 
