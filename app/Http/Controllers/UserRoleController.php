@@ -37,7 +37,7 @@ class UserRoleController extends Controller
       return json_encode($role);
     }
 
-    public    function getRoles(Request $request)
+    public function getRoles(Request $request)
     {
       $role = Auth::user()->roles()->get()->load([
         'children' => function($query){

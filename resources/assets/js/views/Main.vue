@@ -37,6 +37,7 @@ export default {
           console.log("MAIN RESPONSE");
           console.log(response);
           location.reload();
+          this.$store.commit('intendedPath', '/');
           this.$router.push('/login');
         })
         .catch(error => {

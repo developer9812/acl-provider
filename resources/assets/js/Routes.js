@@ -5,6 +5,7 @@ import Main from './views/Main.vue';
 import User from './views/UserMaster.vue';
 import Role from './views/RoleMaster.vue';
 import Login from './views/Login.vue';
+import store from './store';
 
 Vue.use(VueRouter);
 var router = new VueRouter({
@@ -46,6 +47,7 @@ router.beforeEach((to, from, next) => {
           if (status) {
             next();
           } else {
+            store.commit('setIntendedPath', to.fullPath);
             next({
               path: '/login'
             })

@@ -24,8 +24,12 @@ class UserController extends Controller
       }
       else
       {
-        $role = Auth::user()->roles()->first()->load('children');
-        $roleMap = new RoleFlatMap($role->children);
+        $role = Auth::user()->roles()->get()->load([
+          'children' => function($query){
+            return $query->with(['parent', 'owner']);
+          }
+        ]);
+        $roleMap = new RoleFlatMap($role, Auth::user()->roles()->get() );
         return json_encode(User::role($roleMap->getRoles())->get());
       }
     }

@@ -7,10 +7,10 @@
       <li><router-link active-class="is-active" :to="{ name: 'home'}" exact>
             <span class="icon is-left"><i class="fa fa-tachometer"></i></span><span class="menu-text">Dashboard</span>
           </router-link></li>
-      <li><router-link  active-class="is-active" :to="{ name: 'users' }" exact>
+      <li v-can:view-user><router-link  active-class="is-active" :to="{ name: 'users' }" exact>
         <span class="icon is-left "><i class="fa fa-users"></i></span><span class="menu-text">Users</span>
       </router-link></li>
-      <li><router-link active-class="is-active" :to="{ name: 'roles' }" exact>
+      <li v-can:view-role><router-link active-class="is-active" :to="{ name: 'roles' }" exact>
         <span class="icon is-left"><i class="fa fa-user-circle-o"></i></span><span class="menu-text">Roles</span>
       </router-link></li>
     </ul>
@@ -19,6 +19,7 @@
 
 <script>
 import router from '../Routes';
+import Permission from '../services/Permission';
 
 export default {
   data: function(){

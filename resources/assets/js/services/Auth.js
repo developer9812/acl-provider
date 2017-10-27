@@ -27,4 +27,29 @@ export default class Auth {
         })
     })
   }
+
+  static setPermissions(){
+    return new Promise((resolve, reject) => {
+      axios.get('/user/permissions')
+        .then(response => {
+          console.log(response.data);
+          let permissions = [];
+          localStorage.setItem('role', JSON.stringify(response.data));
+          for(let i = 0; i < response.data.length; i++) {
+            console.log(response.data[i]);
+            let rolePermissions = response.data[i].permissions;
+            for(let j = 0; j < rolePermissions.length; j++) {
+              if (!permissions.includes(rolePermissions[j].name)){
+                permissions.push(rolePermissions[j].name);
+              }
+            }
+          }
+          localStorage.setItem('permissions', JSON.stringify(permissions));
+        })
+        .catch(error => {
+          console.log("PERMISSION ERROR");
+          console.log(error);
+        })
+    })
+  }
 }

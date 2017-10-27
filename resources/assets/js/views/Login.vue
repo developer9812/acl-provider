@@ -71,6 +71,8 @@
 </template>
 
 <script>
+import Auth from '../services/Auth';
+
 export default {
   data: function(){
     return {
@@ -95,7 +97,10 @@ export default {
       .then(response => {
         console.log("MAIN RESPONSE");
         console.log(response);
-        this.$router.push('/');
+        let path = this.$store.getters.intendedPath;
+        this.$store.commit('setIntendedPath', '/');
+        Auth.setPermissions();
+        this.$router.push(path);
       })
       .catch(error => {
         console.log("ERROR");

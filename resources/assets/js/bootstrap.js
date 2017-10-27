@@ -16,6 +16,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.ACL = [];
 
+if (!localStorage.getItem('permissions')) {
+  localStorage.setItem('permissions', JSON.stringify([]));
+}
+
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
