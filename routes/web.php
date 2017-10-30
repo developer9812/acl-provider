@@ -58,3 +58,7 @@ Route::get('routes', function() {
       }
     }
 });
+
+Route::get('{path}', function () {
+    return view('index');
+})->where('path', '(.*)');

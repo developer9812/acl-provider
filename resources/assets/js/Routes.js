@@ -9,6 +9,7 @@ import store from './store';
 
 Vue.use(VueRouter);
 var router = new VueRouter({
+  mode: 'history',
   routes: [
     {
       name: 'home',
@@ -28,6 +29,7 @@ var router = new VueRouter({
       ]
     },
     {
+      name: 'login',
       path: '/login',
       component: Login
     }
