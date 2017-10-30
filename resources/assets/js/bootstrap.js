@@ -1,24 +1,17 @@
 
 window._ = require('lodash');
 
+import Vue from 'vue';
+window.Vue = Vue;
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-import Vue from 'vue';
-window.Vue = Vue;
-
 window.axios = require('axios');
-
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-window.ACL = [];
-
-if (!localStorage.getItem('permissions')) {
-  localStorage.setItem('permissions', JSON.stringify([]));
-}
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -33,6 +26,19 @@ if (token) {
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+
+
+/**
+ * Initialize localStorage with permissions
+ */
+if (!localStorage.getItem('permissions')) {
+  localStorage.setItem('permissions', JSON.stringify([]));
+}
+
+/**
+ * Import and Initialize directives
+ */
+require('./directives/directives');
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
