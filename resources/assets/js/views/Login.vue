@@ -3,7 +3,7 @@
     <div class="columns is-centered">
       <div class="column is-4 is-narrow">
         <picture class="image">
-          <img src="images/worsworthelt.svg">
+          <img src="/images/worsworthelt.svg">
         </picture>
         <div class="section login-form">
           <!-- <div class="level">

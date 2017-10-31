@@ -30,15 +30,16 @@ var router = new VueRouter({
     },
     {
       name: 'login',
-      path: '/login',
+      path: '/auth/login',
       component: Login
     }
   ]
 });
 
 router.beforeEach((to, from, next) => {
+  console.log("ROUTE TO");
   console.log(to);
-  if (to.fullPath == '/login') {
+  if (to.name == 'login') {
     next();
   } else {
     Auth.isAuthenticated()
@@ -51,7 +52,7 @@ router.beforeEach((to, from, next) => {
           } else {
             store.commit('setIntendedPath', to.fullPath);
             next({
-              path: '/login'
+              name: 'login'
             })
           }
         })

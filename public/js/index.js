@@ -29882,14 +29882,15 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     }]
   }, {
     name: 'login',
-    path: '/login',
+    path: '/auth/login',
     component: __WEBPACK_IMPORTED_MODULE_5__views_Login_vue___default.a
   }]
 });
 
 router.beforeEach(function (to, from, next) {
+  console.log("ROUTE TO");
   console.log(to);
-  if (to.fullPath == '/login') {
+  if (to.name == 'login') {
     next();
   } else {
     __WEBPACK_IMPORTED_MODULE_1__services_Auth__["a" /* default */].isAuthenticated().then(function (status) {
@@ -29900,7 +29901,7 @@ router.beforeEach(function (to, from, next) {
       } else {
         __WEBPACK_IMPORTED_MODULE_6__store__["a" /* default */].commit('setIntendedPath', to.fullPath);
         next({
-          path: '/login'
+          name: 'login'
         });
       }
     });
@@ -32729,7 +32730,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log(response);
         location.reload();
         _this.$store.commit('intendedPath', '/');
-        _this.$router.push('/login');
+        _this.$router.push({ name: 'login' });
       }).catch(function (error) {
         console.log("ERROR");
         console.log(error);
@@ -35255,7 +35256,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "image"
   }, [_c('img', {
     attrs: {
-      "src": "images/worsworthelt.svg"
+      "src": "/images/worsworthelt.svg"
     }
   })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

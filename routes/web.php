@@ -18,7 +18,28 @@ Route::get('/', function () {
 Route::get('/', 'HomeController@index');
 // Route::get('/user/status', 'Auth\LoginController@authStatus');
 
-Auth::routes();
+/**
+ * Redirect login request to SPA
+ */
+
+ Route::namespace('Auth')->group(function () {
+   // Authentication Routes...
+   $this->get('login', 'LoginController@showLoginForm')->name('login');
+   $this->post('login', 'LoginController@login');
+   $this->post('logout', 'LoginController@logout')->name('logout');
+
+   // Registration Routes...
+   $this->get('register', 'RegisterController@showRegistrationForm')->name('register');
+   $this->post('register', 'RegisterController@register');
+
+   // Password Reset Routes...
+   $this->get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+   $this->post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+   $this->get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+   $this->post('password/reset', 'ResetPasswordController@reset');
+ });
+
+// Auth::routes();
 
 Route::post('/ajax/login', 'Auth\LoginController@ajaxLogin');
 
