@@ -47,66 +47,6 @@
     <role-view :role="selectedRole" :show="selectedRole != null" v-if="selectedRole != null" @close-role-view="closeRoleView"></role-view>
 
     <create-role v-if="newRole" :roles="roles" @close-view="closeCreateRole"></create-role>
-
-    <!-- <div class="modal" :class="{'is-active': newRole}">
-      <div class="modal-background" @click="newRole = false"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">New Role</p>
-          <button class="delete" aria-label="close" @click="newRole = false"></button>
-        </header>
-        <section class="modal-card-body">
-          <div class="field">
-            <label class="label">Role Name</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="eg: admin" v-model="roleName">
-            </div>
-            <p class="help is-danger" v-if="error">Enter a valid name</p>
-          </div>
-          <hr>
-          <div class="field">
-            <label class="label">Define a Parent Role</label>
-          </div>
-          <div class="columns">
-            <div class="column">
-              <div class="field">
-                <label class="label"><a class="button is-link">From own roles</a></label>
-                <div class="control">
-                  <v-select
-                    v-model="newRoleParent"
-                    label="name"
-                    placeholder="Select a Role"
-                    maxHeight='4rem'
-                    :options="roles">
-                  </v-select>
-                </div>
-              </div>
-            </div>
-            <div class="column is-2">
-              OR
-            </div>
-            <div class="column">
-              <div class="field">
-                <label class="label"><a class="button is-link">From other roles</a></label>
-                <div class="control">
-                  <v-select
-                    v-model="newRoleParent"
-                    label="name"
-                    placeholder="Select a Role"
-                    maxHeight='4rem'
-                    :options="roles">
-                  </v-select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <footer class="modal-card-foot">
-          <button class="button is-success" @click="saveRole">Save changes</button>
-          <button class="button" @click="newRole = false">Cancel</button>
-        </footer>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -136,23 +76,6 @@ export default {
     addNewRole: function(){
       this.newRole = true;
     },
-    saveRole: function(){
-      if (this.roleName.length > 0){
-        axios.post('/user/roles/create', {
-          role_name: this.roleName
-        }).then(response => {
-          console.log("RESPONSE");
-          console.log(response);
-          this.newRole = false;
-          this.getRoles();
-        }).catch(error => {
-          console.log("ERROR");
-          console.log(error);
-        })
-      } else {
-        this.error = true;
-      }
-    },
     filterRoles: function(){
       if (this.roleSearch.length > 0) {
         this.filteredRoles = _.filter(this.roles, (role) => {
@@ -167,7 +90,7 @@ export default {
       this.roleSearch = "";
     },
     getRoles: function(){
-      axios.get('/user/roles/get')
+      axios.get('/api/user/roles/get')
         .then(response => {
           console.log("RESPONSE");
           console.log(response);

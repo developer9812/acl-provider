@@ -17,8 +17,4 @@ mix.js('resources/assets/js/app.js', 'public/js')
 mix.js('resources/assets/js/main.js', 'public/js');
 mix.sass('resources/assets/sass/main.scss', 'public/css');
 
-mix.js('resources/assets/js/roles.js', 'public/js');
-
-mix.js('resources/assets/js/user/user.js', 'public/js');
-
 mix.js('resources/assets/js/index.js', 'public/js');

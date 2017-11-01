@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     getUsers: function(){
-      axios.get('/users')
+      axios.get('/api/users')
         .then(response => {
           response.data.forEach((user, index) => {
             console.log("Users fetched successfully");

@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     getPermissions: function(){
-      axios.get('/user/roles/permission', {
+      axios.get('/api/user/roles/permission', {
         params: {
           role: this.role.id
         }
@@ -136,7 +136,7 @@ export default {
         return this.rolePermissionMap[permission.id];
       });
       console.log(newPermissions);
-      axios.post('/user/roles/permission/update', {
+      axios.post('/api/user/roles/permission/update', {
         role: this.role.id,
         permissions: newPermissions
       }).then(response => {
@@ -150,7 +150,7 @@ export default {
 
     },
     deleteRole: function(){
-      axios.delete('/user/role/' + this.role.id)
+      axios.delete('/api/user/role/' + this.role.id)
         .then(response => {
           console.log(response);
           if (response.data) {

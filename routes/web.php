@@ -18,28 +18,9 @@ Route::get('/', function () {
 Route::get('/', 'HomeController@index');
 // Route::get('/user/status', 'Auth\LoginController@authStatus');
 
-/**
- * Redirect login request to SPA
- */
 
- Route::namespace('Auth')->group(function () {
-   // Authentication Routes...
-   $this->get('login', 'LoginController@showLoginForm')->name('login');
-   $this->post('login', 'LoginController@login');
-   $this->post('logout', 'LoginController@logout')->name('logout');
-
-   // Registration Routes...
-   $this->get('register', 'RegisterController@showRegistrationForm')->name('register');
-   $this->post('register', 'RegisterController@register');
-
-   // Password Reset Routes...
-   $this->get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
-   $this->post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-   $this->get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
-   $this->post('password/reset', 'ResetPasswordController@reset');
- });
-
-// Auth::routes();
+// Illuminate\Routing\Router
+Auth::routes();
 
 Route::post('/ajax/login', 'Auth\LoginController@ajaxLogin');
 
@@ -54,18 +35,6 @@ Route::get('/admin/oauth/expiry', 'AdminController@getTokenExpiry');
 Route::post('/admin/oauth/expiry/update', 'AdminController@updateTokenExpiry');
 
 Route::get('/ajax/acl', 'UserController@getRole');
-
-Route::get('/user', 'UserController@index');
-Route::get('/users', 'UserController@getUsers');
-Route::get('/user/roles', 'UserRoleController@index');
-Route::get('/user/roles/get', 'UserRoleController@getRoles');
-Route::post('/user/roles/create', 'UserRoleController@createRole')->middleware('can:add-role');
-Route::post('/user/roles/permission/update', 'UserRoleController@updatePermissions');
-Route::get('/user/roles/permission', 'UserRoleController@getPermissions');
-Route::delete('/user/role/{role}', 'UserRoleController@deleteRole');
-Route::post('/user/role/set', 'UserController@setRole');
-Route::get('/user/{user}/role', 'UserController@getCurrentRole');
-Route::get('/user/permissions', 'Auth\PermissionController@getPermissions');
 
 Route::get('routes', function() {
     $routeCollection = Route::getRoutes();

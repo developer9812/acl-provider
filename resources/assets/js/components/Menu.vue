@@ -19,29 +19,9 @@
 
 <script>
 import router from '../Routes';
-import Permission from '../services/Permission';
 
 export default {
-  data: function(){
-    return {
-      menuItems: []
-    }
-  },
   router: router,
-  created: function(){
-    this.menuItems.push('Home');
-    this.menuItems.push('User');
-    this.menuItems.push('Role');
-    console.log("Menu Created");
-  },
-  methods: {
-    redirect: function(path){
-      location.href = path;
-    },
-    hasPermission: function(permission) {
-
-    }
-  }
 }
 </script>
 

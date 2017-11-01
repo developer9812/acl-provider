@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     getCurrentRole: function(){
-      axios.get('/user/' + this.user.id + '/role/')
+      axios.get('/api/user/' + this.user.id + '/role/')
         .then(response => {
           console.log("Fetched Current Role");
           console.log(response.data);
@@ -78,7 +78,7 @@ export default {
         })
     },
     getRoles: function(){
-      axios.get('/user/roles/get')
+      axios.get('/api/user/roles/get')
         .then( response => {
           console.log("Fetched Roles List");
           console.log(response);
@@ -91,7 +91,7 @@ export default {
     },
     submit: function(){
       if (this.selectedRole) {
-        axios.post('/user/role/set', {
+        axios.post('/api/user/role/set', {
           role: this.selectedRole.id,
           user: this.user.id
         }).then(response => {

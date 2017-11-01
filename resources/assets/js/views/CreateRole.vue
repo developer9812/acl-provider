@@ -103,7 +103,7 @@ export default {
         else {
           this.error = true;
         }
-        axios.post('/user/roles/create', {
+        axios.post('/api/user/roles/create', {
           role_name: this.roleName,
           parent_role: parentRole
         }).then(response => {

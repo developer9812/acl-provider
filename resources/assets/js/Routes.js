@@ -50,6 +50,7 @@ router.beforeEach((to, from, next) => {
           if (status) {
             next();
           } else {
+            // location.reload();
             store.commit('setIntendedPath', to.fullPath);
             next({
               name: 'login'

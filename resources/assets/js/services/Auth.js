@@ -6,7 +6,7 @@ export default class Auth {
 
   /**
    * Checks authentication status
-   * @return {Boolean}
+   * @return {Promise}
    */
   static isAuthenticated(){
     return new Promise((resolve, reject) => {
@@ -28,9 +28,13 @@ export default class Auth {
     })
   }
 
+  /**
+   * Fetch permissions for user and store them in localstorage
+   * @return {Promise}
+   */
   static setPermissions(){
     return new Promise((resolve, reject) => {
-      axios.get('/user/permissions')
+      axios.get('/api/user/permissions')
         .then(response => {
           console.log(response.data);
           let permissions = [];
