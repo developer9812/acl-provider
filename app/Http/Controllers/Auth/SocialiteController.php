@@ -10,6 +10,7 @@ use App\User;
 
 class SocialiteController extends Controller
 {
+  protected $redirectTo = '/home';
   /**
   * Redirect the user to the OAuth Provider.
   *
