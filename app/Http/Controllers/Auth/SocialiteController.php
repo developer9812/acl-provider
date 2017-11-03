@@ -10,7 +10,7 @@ use App\User;
 
 class SocialiteController extends Controller
 {
-  protected $redirectTo = '/home';
+  protected $redirectTo = '/';
   /**
   * Redirect the user to the OAuth Provider.
   *
@@ -35,7 +35,7 @@ class SocialiteController extends Controller
 
     $authUser = $this->findOrCreateUser($user, $provider);
     Auth::login($authUser, true);
-    return redirect($this->redirectTo);
+    return redirect()->intended($this->redirectTo);
   }
 
   /**
