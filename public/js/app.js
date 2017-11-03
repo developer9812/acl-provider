@@ -11373,41 +11373,6 @@ module.exports = Vue$3;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Permission = function () {
-  function Permission() {
-    _classCallCheck(this, Permission);
-  }
-
-  _createClass(Permission, null, [{
-    key: 'hasPermission',
-    value: function hasPermission(name) {
-      if (localStorage.getItem('permissions')) {
-        var permissions = JSON.parse(localStorage.getItem('permissions'));
-        if (permissions.includes(name)) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    }
-  }]);
-
-  return Permission;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (Permission);
-
-/***/ }),
-/* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
@@ -11466,6 +11431,41 @@ __webpack_require__(36);
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Permission = function () {
+  function Permission() {
+    _classCallCheck(this, Permission);
+  }
+
+  _createClass(Permission, null, [{
+    key: 'hasPermission',
+    value: function hasPermission(name) {
+      if (localStorage.getItem('permissions')) {
+        var permissions = JSON.parse(localStorage.getItem('permissions'));
+        if (permissions.includes(name)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+  }]);
+
+  return Permission;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Permission);
 
 /***/ }),
 /* 14 */
@@ -29667,7 +29667,7 @@ Vue.directive('can', __WEBPACK_IMPORTED_MODULE_0__can__["a" /* default */]);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_Permission__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_Permission__ = __webpack_require__(13);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -29738,7 +29738,7 @@ module.exports = __webpack_require__(66);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(13);
+__webpack_require__(12);
 
 try {
     window.$ = window.jQuery = __webpack_require__(45);

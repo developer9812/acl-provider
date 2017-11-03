@@ -31,8 +31,8 @@ Route::get('/passport', 'Auth\PassportController@index');
 Route::get('/admin/oauth', 'AdminController@index');
 Route::get('/admin/oauth/clients', 'AdminController@getAllClients');
 
-Route::get('/admin/oauth/expiry', 'AdminController@getTokenExpiry');
-Route::post('/admin/oauth/expiry/update', 'AdminController@updateTokenExpiry');
+// Route::get('/admin/oauth/expiry', 'AdminController@getTokenExpiry');
+// Route::post('/admin/oauth/expiry/update', 'AdminController@updateTokenExpiry');
 
 Route::get('/ajax/acl', 'UserController@getRole');
 
@@ -48,6 +48,9 @@ Route::get('routes', function() {
       }
     }
 });
+
+Route::get('auth/social/{provider}', 'Auth\SocialiteController@redirectToProvider');
+Route::get('auth/social/{provider}/callback', 'Auth\SocialiteController@handleProviderCallback');
 
 Route::get('{path}', function () {
     return view('index');

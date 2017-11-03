@@ -11373,41 +11373,6 @@ module.exports = Vue$3;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Permission = function () {
-  function Permission() {
-    _classCallCheck(this, Permission);
-  }
-
-  _createClass(Permission, null, [{
-    key: 'hasPermission',
-    value: function hasPermission(name) {
-      if (localStorage.getItem('permissions')) {
-        var permissions = JSON.parse(localStorage.getItem('permissions'));
-        if (permissions.includes(name)) {
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    }
-  }]);
-
-  return Permission;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (Permission);
-
-/***/ }),
-/* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
@@ -11466,6 +11431,41 @@ __webpack_require__(36);
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Permission = function () {
+  function Permission() {
+    _classCallCheck(this, Permission);
+  }
+
+  _createClass(Permission, null, [{
+    key: 'hasPermission',
+    value: function hasPermission(name) {
+      if (localStorage.getItem('permissions')) {
+        var permissions = JSON.parse(localStorage.getItem('permissions'));
+        if (permissions.includes(name)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+  }]);
+
+  return Permission;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Permission);
 
 /***/ }),
 /* 14 */
@@ -29667,7 +29667,7 @@ Vue.directive('can', __WEBPACK_IMPORTED_MODULE_0__can__["a" /* default */]);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_Permission__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_Permission__ = __webpack_require__(13);
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -29738,7 +29738,7 @@ staticClass:"no-options"},[t._t("no-options",[t._v("Sorry, no matching options."
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_Login_vue__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__views_Login_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store__ = __webpack_require__(42);
-__webpack_require__(13);
+__webpack_require__(12);
 
 
 
@@ -29957,8 +29957,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Routes__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_Http__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_js__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_Permission__ = __webpack_require__(12);
-__webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_Permission__ = __webpack_require__(13);
+__webpack_require__(12);
 
 
 
@@ -35126,6 +35126,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -35163,6 +35173,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.setError(error);
         console.log(error);
       });
+    },
+    googleLogin: function googleLogin() {
+      window.location.href = "/auth/social/google";
     },
     setError: function setError(error) {
       var _this2 = this;
@@ -35309,7 +35322,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.submit
     }
-  }, [_vm._v("\n              Log in\n            ")])])]), _vm._v(" "), (_vm.error) ? _c('div', {
+  }, [_vm._v("\n              Log in\n            ")])])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('p', {
+    staticClass: "control"
+  }, [_c('button', {
+    staticClass: "button is-outlined is-info",
+    on: {
+      "click": _vm.googleLogin
+    }
+  }, [_vm._m(4), _vm._v(" "), _c('span', [_vm._v("Sign in with Google")])])])]), _vm._v(" "), (_vm.error) ? _c('div', {
     staticClass: "notification is-danger"
   }, [_c('p', [_vm._v(_vm._s(_vm.message))])]) : _vm._e()])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -35338,6 +35360,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('p', {
     staticClass: "level-item"
   }, [_c('a', [_vm._v("Forgot Password ?")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
+    staticClass: "icon"
+  }, [_c('i', {
+    staticClass: "fa fa-google"
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
