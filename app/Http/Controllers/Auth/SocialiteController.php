@@ -50,10 +50,14 @@ class SocialiteController extends Controller
     if ($authUser) {
         return $authUser;
     }
+    $username = $user->email;
+    if($user->username) {
+      $username = $user->username;
+    }
     return User::create([
         'name'     => $user->name,
         'email'    => $user->email,
-        'username' => $user->username,
+        'username' => $username,
         'provider' => $provider,
         'provider_id' => $user->id
     ]);
