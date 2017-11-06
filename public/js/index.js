@@ -34000,6 +34000,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -34922,7 +34924,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("New Role")])])])]), _vm._v(" "), _c('table', {
     staticClass: "table is-fullwidth"
   }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.filteredRoles), function(role) {
-    return _c('tr', [_c('td', [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(role.parent ? role.parent.name : 'N/A'))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(role.owner ? role.owner.name : 'N/A'))]), _vm._v(" "), _c('td', [_c('a', {
+    return _c('tr', [_c('td', [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(role.guard_name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(role.parent ? role.parent.name : 'N/A'))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(role.owner ? role.owner.name : 'N/A'))]), _vm._v(" "), _c('td', [_c('a', {
       staticClass: "button is-small",
       on: {
         "click": function($event) {
@@ -34947,7 +34949,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }) : _vm._e()], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("Role ID")]), _vm._v(" "), _c('th', [_vm._v("Role Name")]), _vm._v(" "), _c('th', [_vm._v("Parent Role")]), _vm._v(" "), _c('th', [_vm._v("Created By")]), _vm._v(" "), _c('th')])])
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("Role ID")]), _vm._v(" "), _c('th', [_vm._v("Role Name")]), _vm._v(" "), _c('th', [_vm._v("Guard Name")]), _vm._v(" "), _c('th', [_vm._v("Parent Role")]), _vm._v(" "), _c('th', [_vm._v("Created By")]), _vm._v(" "), _c('th')])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

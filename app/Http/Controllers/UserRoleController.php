@@ -25,7 +25,7 @@ class UserRoleController extends Controller
 
     public function createRole(Request $request)
     {
-      $role = new Role();
+      $role = new Role(['guard_name' => 'web']); //Web Guard Name is explicitly as service is called from api
       $role->name = $request->get('role_name');
       if ($request->has('parent_role')) {
         $role->parent()->associate(Role::whereName($request->get('parent_role'))->first());
