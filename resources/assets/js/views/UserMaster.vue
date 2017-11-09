@@ -20,8 +20,8 @@
       <table class="table is-fullwidth">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Username</th>
+            <th>User ID</th>
             <th>Name</th>
             <th>Email ID</th>
             <th></th>
@@ -29,8 +29,8 @@
         </thead>
         <tbody>
           <tr v-for='user in filteredUsers'>
-            <td>{{ user.id }}</td>
             <td>{{ user.username }}</td>
+            <td>{{ user.user_id }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
             <td><a class="button is-small" @click="selectedUser = user">View</a></td>
