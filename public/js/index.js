@@ -11937,10 +11937,17 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
+<<<<<<< HEAD
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(18).setImmediate))
 
 /***/ }),
 /* 13 */
+=======
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ }),
+/* 12 */
+>>>>>>> f268df028661d89860d240725dd2952c078fb354
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12002,6 +12009,41 @@ __webpack_require__(39);
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Permission = function () {
+  function Permission() {
+    _classCallCheck(this, Permission);
+  }
+
+  _createClass(Permission, null, [{
+    key: 'hasPermission',
+    value: function hasPermission(name) {
+      if (localStorage.getItem('permissions')) {
+        var permissions = JSON.parse(localStorage.getItem('permissions'));
+        if (permissions.includes(name)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+  }]);
+
+  return Permission;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Permission);
 
 /***/ }),
 /* 14 */
@@ -30301,7 +30343,11 @@ Vue.directive('can', __WEBPACK_IMPORTED_MODULE_0__can__["a" /* default */]);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_Permission__ = __webpack_require__(15);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_Permission__ = __webpack_require__(13);
+>>>>>>> f268df028661d89860d240725dd2952c078fb354
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -30374,8 +30420,13 @@ staticClass:"no-options"},[t._t("no-options",[t._v("Sorry, no matching options."
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_RoleMaster_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_RoleMaster_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_Login_vue__ = __webpack_require__(138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__views_Login_vue__);
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store__ = __webpack_require__(58);
 __webpack_require__(13);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store__ = __webpack_require__(42);
+__webpack_require__(12);
+>>>>>>> f268df028661d89860d240725dd2952c078fb354
 
 
 
@@ -30606,11 +30657,19 @@ module.exports = __webpack_require__(91);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Routes__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_Http__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_js__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_Permission__ = __webpack_require__(15);
 __webpack_require__(13);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Routes__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_Http__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_js__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_Permission__ = __webpack_require__(13);
+__webpack_require__(12);
+>>>>>>> f268df028661d89860d240725dd2952c078fb354
 
 
 
@@ -34730,6 +34789,7 @@ if (false) {
 /* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -34849,6 +34909,75 @@ var staticRenderFns = [
 ]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
+=======
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "column is-paddingless"
+  }, [_c('section', {
+    staticClass: "section"
+  }, [_c('nav', {
+    staticClass: "level"
+  }, [_c('div', {
+    staticClass: "level-left"
+  }, [_c('div', {
+    staticClass: "level-item"
+  }, [_c('div', {
+    staticClass: "field has-addons"
+  }, [_c('p', {
+    staticClass: "control"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.userSearch),
+      expression: "userSearch"
+    }],
+    staticClass: "input",
+    attrs: {
+      "type": "text",
+      "placeholder": "Find a user"
+    },
+    domProps: {
+      "value": (_vm.userSearch)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.userSearch = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('p', {
+    staticClass: "control"
+  }, [_c('button', {
+    staticClass: "button",
+    on: {
+      "click": _vm.filterUsers
+    }
+  }, [_vm._v("\n                Search\n              ")])])])])])]), _vm._v(" "), _c('table', {
+    staticClass: "table is-fullwidth"
+  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.filteredUsers), function(user) {
+    return _c('tr', [_c('td', [_vm._v(_vm._s(user.username))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(user.user_id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(user.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(user.email))]), _vm._v(" "), _c('td', [_c('a', {
+      staticClass: "button is-small",
+      on: {
+        "click": function($event) {
+          _vm.selectedUser = user
+        }
+      }
+    }, [_vm._v("View")])])])
+  }))])]), _vm._v(" "), (_vm.selectedUser != null) ? _c('user-view', {
+    attrs: {
+      "user": _vm.selectedUser,
+      "show-view": _vm.selectedUser != null
+    },
+    on: {
+      "close-user-view": _vm.closeUserView
+    }
+  }) : _vm._e()], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("Username")]), _vm._v(" "), _c('th', [_vm._v("User ID")]), _vm._v(" "), _c('th', [_vm._v("Name")]), _vm._v(" "), _c('th', [_vm._v("Email ID")]), _vm._v(" "), _c('th')])])
+}]}
+module.exports.render._withStripped = true
+>>>>>>> f268df028661d89860d240725dd2952c078fb354
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -34960,6 +35089,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CreateRole_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__CreateRole_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_select__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_select__);
+//
+//
 //
 //
 //
@@ -36026,6 +36157,7 @@ if (false) {
 /* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -36166,6 +36298,91 @@ var staticRenderFns = [
 ]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
+=======
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "column is-paddingless"
+  }, [_c('section', {
+    staticClass: "section"
+  }, [_c('nav', {
+    staticClass: "level"
+  }, [_c('div', {
+    staticClass: "level-left"
+  }, [_c('div', {
+    staticClass: "level-item"
+  }, [_c('div', {
+    staticClass: "field has-addons"
+  }, [_c('p', {
+    staticClass: "control"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.roleSearch),
+      expression: "roleSearch"
+    }],
+    staticClass: "input",
+    attrs: {
+      "type": "text",
+      "placeholder": "Find a role"
+    },
+    domProps: {
+      "value": (_vm.roleSearch)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.roleSearch = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('p', {
+    staticClass: "control"
+  }, [_c('button', {
+    staticClass: "button",
+    on: {
+      "click": _vm.filterRoles
+    }
+  }, [_vm._v("\n                Search\n              ")])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "level-right"
+  }, [_c('div', {
+    staticClass: "level-item"
+  }, [_c('a', {
+    staticClass: "button is-primary is-outlined",
+    on: {
+      "click": _vm.addNewRole
+    }
+  }, [_vm._v("New Role")])])])]), _vm._v(" "), _c('table', {
+    staticClass: "table is-fullwidth"
+  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.filteredRoles), function(role) {
+    return _c('tr', [_c('td', [_vm._v(_vm._s(role.id))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(role.guard_name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(role.parent ? role.parent.name : 'N/A'))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(role.owner ? role.owner.name : 'N/A'))]), _vm._v(" "), _c('td', [_c('a', {
+      staticClass: "button is-small",
+      on: {
+        "click": function($event) {
+          _vm.selectedRole = role
+        }
+      }
+    }, [_vm._v("View")])])])
+  }))])]), _vm._v(" "), (_vm.selectedRole != null) ? _c('role-view', {
+    attrs: {
+      "role": _vm.selectedRole,
+      "show": _vm.selectedRole != null
+    },
+    on: {
+      "close-role-view": _vm.closeRoleView
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.newRole) ? _c('create-role', {
+    attrs: {
+      "roles": _vm.roles
+    },
+    on: {
+      "close-view": _vm.closeCreateRole
+    }
+  }) : _vm._e()], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('thead', [_c('tr', [_c('th', [_vm._v("Role ID")]), _vm._v(" "), _c('th', [_vm._v("Role Name")]), _vm._v(" "), _c('th', [_vm._v("Guard Name")]), _vm._v(" "), _c('th', [_vm._v("Parent Role")]), _vm._v(" "), _c('th', [_vm._v("Created By")]), _vm._v(" "), _c('th')])])
+}]}
+module.exports.render._withStripped = true
+>>>>>>> f268df028661d89860d240725dd2952c078fb354
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -36344,6 +36561,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -36381,6 +36608,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.setError(error);
         console.log(error);
       });
+    },
+    googleLogin: function googleLogin() {
+      window.location.href = "/auth/social/google";
     },
     setError: function setError(error) {
       var _this2 = this;
@@ -36448,6 +36678,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -36646,6 +36877,173 @@ var staticRenderFns = [
 ]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
+=======
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "page-background"
+    }
+  }, [_c('div', {
+    staticClass: "columns is-centered"
+  }, [_c('div', {
+    staticClass: "column is-4 is-narrow"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "section login-form"
+  }, [_c('div', {
+    staticClass: "field"
+  }, [_c('div', {
+    staticClass: "control has-icons-left has-icons-right"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.username),
+      expression: "form.username"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.errors.hasOwnProperty('username')
+    },
+    attrs: {
+      "type": "text",
+      "placeholder": "Username/Email"
+    },
+    domProps: {
+      "value": (_vm.form.username)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.username = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _vm._m(1)]), _vm._v(" "), (_vm.errors.hasOwnProperty('username')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.getError("username")))]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('div', {
+    staticClass: "control has-icons-left has-icons-right"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.password),
+      expression: "form.password"
+    }],
+    staticClass: "input",
+    class: {
+      'is-danger': _vm.errors.hasOwnProperty('password')
+    },
+    attrs: {
+      "type": "password",
+      "placeholder": "Password"
+    },
+    domProps: {
+      "value": (_vm.form.password)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.form.password = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _vm._m(2)]), _vm._v(" "), (_vm.errors.hasOwnProperty('password')) ? _c('p', {
+    staticClass: "help is-danger"
+  }, [_vm._v(_vm._s(_vm.getError("password")))]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "field level"
+  }, [_c('div', {
+    staticClass: "level-left"
+  }, [_c('p', {
+    staticClass: "level-item"
+  }, [_c('label', {
+    staticClass: "checkbox"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.form.remember),
+      expression: "form.remember"
+    }],
+    attrs: {
+      "type": "checkbox"
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.form.remember) ? _vm._i(_vm.form.remember, null) > -1 : (_vm.form.remember)
+    },
+    on: {
+      "__c": function($event) {
+        var $$a = _vm.form.remember,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.form.remember = $$a.concat([$$v]))
+          } else {
+            $$i > -1 && (_vm.form.remember = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.form.remember = $$c
+        }
+      }
+    }
+  }), _vm._v("\n                Remember me\n              ")])])]), _vm._v(" "), _vm._m(3)]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('p', {
+    staticClass: "control"
+  }, [_c('button', {
+    staticClass: "button is-fullwidth is-primary login-submit",
+    on: {
+      "click": _vm.submit
+    }
+  }, [_vm._v("\n              Log in\n            ")])])]), _vm._v(" "), _c('div', {
+    staticClass: "field"
+  }, [_c('p', {
+    staticClass: "control"
+  }, [_c('button', {
+    staticClass: "button is-outlined is-info",
+    on: {
+      "click": _vm.googleLogin
+    }
+  }, [_vm._m(4), _vm._v(" "), _c('span', [_vm._v("Sign in with Google")])])])]), _vm._v(" "), (_vm.error) ? _c('div', {
+    staticClass: "notification is-danger"
+  }, [_c('p', [_vm._v(_vm._s(_vm.message))])]) : _vm._e()])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('picture', {
+    staticClass: "image"
+  }, [_c('img', {
+    attrs: {
+      "src": "/images/worsworthelt.svg"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
+    staticClass: "icon is-small is-left"
+  }, [_c('i', {
+    staticClass: "fa fa-user"
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
+    staticClass: "icon is-small is-left"
+  }, [_c('i', {
+    staticClass: "fa fa-lock"
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "level-right"
+  }, [_c('p', {
+    staticClass: "level-item"
+  }, [_c('a', [_vm._v("Forgot Password ?")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
+    staticClass: "icon"
+  }, [_c('i', {
+    staticClass: "fa fa-google"
+  })])
+}]}
+module.exports.render._withStripped = true
+>>>>>>> f268df028661d89860d240725dd2952c078fb354
 if (false) {
   module.hot.accept()
   if (module.hot.data) {

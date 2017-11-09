@@ -61,6 +61,16 @@
               </button>
             </p>
           </div>
+          <div class="field">
+            <p class="control">
+              <button class="button is-outlined is-info" @click="googleLogin">
+                <span class="icon">
+                  <i class="fa fa-google"></i>
+                </span>
+                <span>Sign in with Google</span>
+              </button>
+            </p>
+          </div>
           <div v-if="error" class="notification is-danger">
             <p>{{ message }}</p>
           </div>
@@ -107,6 +117,9 @@ export default {
         this.setError(error);
         console.log(error);
       })
+    },
+    googleLogin: function(){
+      window.location.href = "/auth/social/google";
     },
     setError: function(error){
       this.message = error.response.data.message;

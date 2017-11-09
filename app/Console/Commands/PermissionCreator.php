@@ -161,6 +161,8 @@ class PermissionCreator extends Command
       $this->info('Creating Role >> ' . $role);
       $admin = new Role();
       $admin->name = $role;
+      $admin->parent_id = 0;
+      $admin->owner_id = 0;
       $admin->save();
       $this->syncAdminPermissions($admin);
     }

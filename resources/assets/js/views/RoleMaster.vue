@@ -27,6 +27,7 @@
           <tr>
             <th>Role ID</th>
             <th>Role Name</th>
+            <th>Guard Name</th>
             <th>Parent Role</th>
             <th>Created By</th>
             <th></th>
@@ -36,6 +37,7 @@
           <tr v-for='role in filteredRoles'>
             <td>{{ role.id }}</td>
             <td>{{ role.name }}</td>
+            <td>{{ role.guard_name }}</td>
             <td>{{ role.parent ? role.parent.name : 'N/A' }}</td>
             <td>{{ role.owner ? role.owner.name : 'N/A' }}</td>
             <td><a class="button is-small" @click="selectedRole = role">View</a></td>
