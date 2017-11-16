@@ -26,6 +26,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::middleware('auth:api')->group(function(){
   Route::get('/user', 'UserController@index');
   Route::get('/users', 'UserController@getUsers');
+  Route::delete('/user/{user}', 'UserController@delete');
 
   Route::get('/user/role', 'Auth\PermissionController@getPermissions');
   Route::get('/user/status', 'UserController@getStatus');

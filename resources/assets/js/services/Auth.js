@@ -43,17 +43,62 @@ export default class Auth {
             console.log(response.data[i]);
             let rolePermissions = response.data[i].permissions;
             for(let j = 0; j < rolePermissions.length; j++) {
-              if (!permissions.includes(rolePermissions[j].name)){
+              if(!permissions.includes(rolePermissions[j].name)){
                 permissions.push(rolePermissions[j].name);
               }
             }
           }
           localStorage.setItem('permissions', JSON.stringify(permissions));
+          resolve();
         })
         .catch(error => {
           console.log("PERMISSION ERROR");
           console.log(error);
+          reject();
         })
     })
   }
+
+  static login(form){
+    return new Promise((resolve, reject) => {
+      axios.post('/login',form)
+      .then(response => {
+        console.log(response);
+        resolve();
+        // let path = this.$store.getters.intendedPath;
+        // console.log("PATH => "+path);
+        // this.$store.commit('setIntendedPath', '/');
+        // setPermissions();
+        // this.$router.push(path);
+      })
+      .catch(error => {
+        console.log("ERROR");
+        // this.setError(error);
+        console.log(error);
+        reject(error);
+      })
+    });
+  }
+
+  static logout(){
+    // location.reload();
+    localStorage.setItem('role','');
+    localStorage.setItem('permissions','');
+    /*axios.post('/logout')
+      .then(response => {
+        console.log("MAIN RESPONSE");
+        console.log(response);
+        localStorage.setItem('role','');
+        localStorage.setItem('permissions','');
+        // location.reload();
+        // this.$store.commit('intendedPath', '/');
+        // this.$router.push({name: 'login'});
+      })
+      .catch(error => {
+        console.log("ERROR");
+        console.log(error);
+        // location.reload();
+      })*/
+  }
+
 }

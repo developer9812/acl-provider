@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import Auth from '../services/Auth';
+
 export default {
   data: function(){
     return {
@@ -48,6 +50,7 @@ export default {
       this.$emit('toggle-menu');
     },
     logout: function(){
+      Auth.logout();
       this.$emit('logout');
     }
   }

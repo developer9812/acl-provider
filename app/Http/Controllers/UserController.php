@@ -39,6 +39,12 @@ class UserController extends Controller
       return view('user.users');
     }
 
+    public function delete(User $user)
+    {
+      $status = $user->delete();
+      return (json_encode(['status' => $status]));
+    }
+
     public function getRole()
     {
       return json_encode(Auth::user()->roles()->with([

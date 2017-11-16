@@ -87,6 +87,7 @@
 
 <script>
 import Validate from '../services/Validate';
+import Auth from '../services/Auth';
 
 export default{
   data: function(){
@@ -139,16 +140,17 @@ export default{
         Vue.set(this.errormsg, formfield, errorObj);
         // this.errormsg[formfield] = errorObj;
       }
-
       console.log("ERROR ARRAY");
       console.log(this.errormsg);
     },
     registerUser: function(){
-      console.log("REGISTER USER");
       axios.post('/register', this.form).
       then(response => {
-        console.log(response);
-        this.$router.push('/');
+        let path = this.$store.getters.intendedPath;
+        this.$store.commit('setIntendedPath', '/');
+        Auth.setPermissions();
+        this.$router.go()
+        // this.$router.push('/profile');
       }).
       catch(error => {
         console.log(error);
