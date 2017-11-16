@@ -1,0 +1,96 @@
+"address": {
+    "house": "204",
+    "building": "Silicon Tower",
+    "landmark": "National Handloom",
+    "street": "Lawgarden",
+    "city": "Ahmedabad",
+    "subdistrict": "Ahmadabad City",
+    "district": "Ahmedabad",
+    "district_iso": "AH",
+    "state": "Gujarat",
+    "states_iso": "GJ",
+    "country": "India",
+    "pincode": "",
+}
+
+"user_master": {
+  "attributes": {
+    "id": "",
+    "unique_id": "", // from old mongo db
+    "username": "",
+    "password": "",
+    "phone": "",
+    "email": ""
+  },
+  "relations": {
+    "role": {
+      "relation": "M-M",
+      "table/model": "roles",
+      "pivot": "(via spatie laravel plugin)"
+    }
+  }
+}
+
+"personal_profile": {
+  "attributes": {
+    "id": "",
+    "user_id": "",
+    "title": "",
+    "first_name": "",
+    "middle_name": "",
+    "last_name": "",
+    "nick_name": "",
+    "picture": "",
+    "permanent_address_id": "(int)",
+    "residence_address_id": "(int)",
+    "DOB": "dd-mmm-yyyy",
+    "gender": "",
+    "phone": "",
+    "email": ""
+  },
+  "relations": {
+    "user": {
+      "relation": "1<->1"
+    },
+    "permnanent_address": {
+      "relation": "M-M",
+      "table/model": "address"
+    },
+    "residence_address": {
+      "relation": "M-M",
+      "table/model": "address"
+    },
+    "phone" {
+      "relation": "1->M"
+    },
+    "email": {
+      "relation": "1->M"
+    }
+  }
+}
+
+"user_phone": {
+  "attributes": {
+    "id": "",
+    "profile_id": "",
+    "user_id": "",
+    "phone_no": ""
+  },
+  "relation": {
+    "user": "M-M",
+    "table/model": "user_phones"
+  }
+}
+
+"user_email": {
+  "attributes": {
+    "id": "",
+    "profile_id": "",
+    "user_id": "",
+    "email": ""
+  },
+  "relation": {
+    "user": "M-M",
+    "table/model": "UserEmail"
+  }
+}
