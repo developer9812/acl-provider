@@ -40,4 +40,6 @@ Route::middleware('auth:api')->group(function(){
   Route::post('/user/role/set', 'UserController@setRole');
   Route::get('/user/{user}/role', 'UserController@getCurrentRole');
   Route::get('/user/permissions', 'Auth\PermissionController@getPermissions');
+
+  Route::post('/profile/personal', 'Profiles\PersonalProfileController@createProfile');
 });

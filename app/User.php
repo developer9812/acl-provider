@@ -40,4 +40,9 @@ class User extends Authenticatable
       return $this->hasMany('App\Models\RoleOwner');
     }
 
+    public function personalProfile()
+    {
+      return $this->hasOne('App\Models\Profiles\PersonalProfile');
+    }
+
 }
