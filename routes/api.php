@@ -41,4 +41,6 @@ Route::middleware('auth:api')->group(function(){
   Route::get('/user/permissions', 'Auth\PermissionController@getPermissions');
 
   Route::post('/profile/personal', 'Profiles\PersonalProfileController@createProfile');
+  Route::put('/profile/personal/{profile}/{attribute}', 'Profiles\PersonalProfileController@updateProfileAttribute');
+  Route::delete('/profile/personal/{profile}', 'Profiles\PersonalProfileController@deleteProfile');
 });

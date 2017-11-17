@@ -17,12 +17,12 @@ class CreatePhonesTable extends Migration
         Schema::create('phones', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('profile_id');
-            $table->unsignedInteger('user_id');
+            $table->string('user_id');
             $table->string('phone_no');
             $table->timestamps();
 
             $table->foreign('profile_id')->references('id')->on('personal_profiles')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
         });
     }
 

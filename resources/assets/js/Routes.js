@@ -7,6 +7,8 @@ import Role from './views/RoleMaster.vue';
 import Login from './views/Login.vue';
 import store from './store';
 
+import Test from './views/Test.vue';
+
 Vue.use(VueRouter);
 var router = new VueRouter({
   mode: 'history',
@@ -25,6 +27,11 @@ var router = new VueRouter({
           name: 'roles',
           path: '/roles',
           component: Role,
+        },
+        {
+          name: 'test',
+          path: '/test',
+          component: Test
         }
       ]
     },

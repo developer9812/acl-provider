@@ -29738,7 +29738,11 @@ staticClass:"no-options"},[t._t("no-options",[t._v("Sorry, no matching options."
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_Login_vue__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__views_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__views_Login_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_Test_vue__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__views_Test_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__views_Test_vue__);
 __webpack_require__(12);
+
+
 
 
 
@@ -29762,6 +29766,10 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
       name: 'roles',
       path: '/roles',
       component: __WEBPACK_IMPORTED_MODULE_4__views_RoleMaster_vue___default.a
+    }, {
+      name: 'test',
+      path: '/test',
+      component: __WEBPACK_IMPORTED_MODULE_7__views_Test_vue___default.a
     }]
   }, {
     name: 'login',
@@ -29955,7 +29963,7 @@ module.exports = __webpack_require__(75);
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Routes__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_Http__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_Http__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_js__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_Permission__ = __webpack_require__(13);
 __webpack_require__(12);
@@ -36273,6 +36281,228 @@ var index_esm = {
 
 /***/ }),
 /* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(130)
+}
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(132),
+  /* template */
+  __webpack_require__(133),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/var/www/html/oauth-server/resources/assets/js/views/Test.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Test.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6604b962", Component.options)
+  } else {
+    hotAPI.reload("data-v-6604b962", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(131);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("5a38b592", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6604b962\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Test.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6604b962\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Test.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 131 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 132 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      form: {
+        "profile": {
+          "title": "Mr",
+          "first_name": "John",
+          "middle_name": "",
+          "last_name": "Smith",
+          "nick_name": "",
+          "dob": "11/11/1990",
+          "picture": "",
+          "gender": "M"
+        },
+        "relations": {
+          "permanentAddress": {
+            "block": "12",
+            "building": "ABC",
+            "street": "S1",
+            "landmark": "Nr S2",
+            "pincode": "122456",
+            "city": "Ahmedabad",
+            "district": 'Ahmedabad',
+            "district_iso": 'AH',
+            "state": "Gujarat",
+            "state_iso": 'GJ',
+            "country": "India"
+          },
+          "residenceAddress": {
+            "block": "12",
+            "building": "ABC",
+            "street": "S1",
+            "landmark": "Nr S2",
+            "pincode": "122456",
+            "city": "Ahmedabad",
+            "district": 'Ahmedabad',
+            "district_iso": 'AH',
+            "state": "Gujarat",
+            "state_iso": 'GJ',
+            "country": "India"
+          }
+        }
+      }
+    };
+  },
+  methods: {
+    callApi: function callApi() {
+      axios.post('/api/profile/personal', this.form).then(function (response) {
+        console.log("Response");
+        console.log(response);
+      }).catch(function (error) {
+        console.log("ERROR");
+        console.log(error);
+      });
+    },
+    udpateApi: function udpateApi() {
+      axios.put('/api/profile/personal/' + '1' + '/' + 'first_name', {
+        value: "Mark"
+      }).then(function (response) {
+        console.log('RESPONSE');
+        console.log(response);
+      }).catch(function (error) {
+        console.log("ERROR");
+        console.log(error);
+      });
+    },
+    updateAddress: function updateAddress() {
+      var address = {
+        "block": "122",
+        "building": "LMN",
+        "street": "S1",
+        "landmark": "Nr S2",
+        "pincode": "122456",
+        "city": "Ahmedabad",
+        "district": 'Ahmedabad',
+        "district_iso": 'AH',
+        "state": "Gujarat",
+        "state_iso": 'GJ',
+        "country": "India"
+      };
+      axios.put('/api/profile/personal/' + '1' + '/' + 'permanentAddress', {
+        value: address
+      }).then(function (response) {
+        console.log("RESPONSE");
+        console.log(response);
+      }).catch(function (error) {
+        console.log("ERROR");
+        console.log(error);
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 133 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {}, [_c('a', {
+    staticClass: "button is-primary is-outlined",
+    on: {
+      "click": _vm.callApi
+    }
+  }, [_vm._v("Test API")]), _vm._v(" "), _c('a', {
+    staticClass: "button is-primary is-outlined",
+    on: {
+      "click": _vm.udpateApi
+    }
+  }, [_vm._v("Test UPDATE API")]), _vm._v(" "), _c('a', {
+    staticClass: "button is-primary is-outlined",
+    on: {
+      "click": _vm.updateAddress
+    }
+  }, [_vm._v("Test ADDRESS UPDATE API")])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6604b962", module.exports)
+  }
+}
+
+/***/ }),
+/* 134 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

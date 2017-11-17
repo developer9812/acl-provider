@@ -15,7 +15,7 @@ class CreatePersonalProfilesTable extends Migration
     {
       Schema::create('personal_profiles', function (Blueprint $table) {
           $table->increments('id');
-          $table->unsignedInteger('user_id');
+          $table->string('user_id');
           $table->string('title')->nullable();
           $table->string('first_name');
           $table->string('middle_name')->nullable();
@@ -27,6 +27,8 @@ class CreatePersonalProfilesTable extends Migration
           $table->date("dob");
           $table->char('gender', 1);
           $table->timestamps();
+
+          $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
       });
     }
 
