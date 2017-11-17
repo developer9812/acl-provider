@@ -9,6 +9,8 @@ import store from './store';
 import Register from './views/Register.vue';
 import Profile from './views/Profile.vue';
 
+import Test from './views/Test.vue';
+
 Vue.use(VueRouter);
 var router = new VueRouter({
   mode: 'history',
@@ -32,6 +34,11 @@ var router = new VueRouter({
           name: 'profile',
           path: '/profile',
           component: Profile
+        },
+        {
+          name: 'test',
+          path: '/test',
+          component: Test
         }
       ]
     },

@@ -102,11 +102,10 @@ export default {
       this.show = !(this.show);
     },
     changeAddress: function(){
-      console.log(this.title);
       this.$emit('show-detail', this.address, this.title);
     },
     copyAddress: function(){
-
+      
     },
     addressBlock: function(){
       console.log("CHANGE");
