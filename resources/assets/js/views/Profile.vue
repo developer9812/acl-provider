@@ -22,22 +22,22 @@
             </div>
             <div class="column">
               <div class="control">
-                <input type="text" class="input is-primary" name="" v-model="form.profile.firstname" placeholder="First Name" value="">
+                <input type="text" class="input is-primary" name="" v-model="form.profile.first_name" placeholder="First Name" value="">
               </div>
             </div>
             <div class="column">
               <div class="control">
-                <input type="text" class="input is-primary" name="" v-model="form.profile.middlename" placeholder="Middle Name" value="">
+                <input type="text" class="input is-primary" name="" v-model="form.profile.middle_name" placeholder="Middle Name" value="">
               </div>
             </div>
             <div class="column">
               <div class="control">
-                <input type="text" class="input is-primary" name="" v-model="form.profile.lastname" placeholder="Last Name" value="">
+                <input type="text" class="input is-primary" name="" v-model="form.profile.last_name" placeholder="Last Name" value="">
               </div>
             </div>
             <div class="column">
               <div class="control">
-                <input type="text" class="input is-primary" name="" v-model="form.profile.nickname" placeholder="Nick Name" value="">
+                <input type="text" class="input is-primary" name="" v-model="form.profile.nick_name" placeholder="Nick Name" value="">
               </div>
             </div>
           </div>
@@ -47,7 +47,8 @@
               <div class="field">
                 <label for="" class="title is-6"> Date Of Birth </label>
                 <div class="control">
-                  <input type="text" class="input is-primary" name="" v-model="form.profile.dob" value="" placeholder="Enter Birthdate">
+                  <v-date-picker mode='single' inputClass='input' v-model='form.profile.dob'></v-date-picker>
+                  <!-- <input type="text" class="input is-primary" name="" v-model="form.profile.dob" value="" placeholder="Enter Birthdate"> -->
                 </div>
               </div>
             </div>
@@ -56,10 +57,10 @@
                 <label for="" class="title is-6"> Gender </label>
                 <div class="control">
                   <label for="" class="radio">
-                    <input class="is-primary" type="radio" v-model="form.profile.gender" name="gender" value="male"> Male
+                    <input class="is-primary" type="radio" v-model="form.profile.gender" name="gender" value="M"> Male
                   </label>
                   <label for="" class="radio">
-                      <input class="is-primary" type="radio" v-model="form.profile.gender" name="gender" value="female"> Female
+                      <input class="is-primary" type="radio" v-model="form.profile.gender" name="gender" value="F"> Female
                   </label>
                 </div>
               </div>
@@ -101,7 +102,7 @@
             </div>
 
             <div class="column">
-              <address-component title="Present Address"></address-component>
+              <address-component title="Present Address" v-on:show-detail="getAddress"></address-component>
             </div>
           </div>
 
@@ -153,15 +154,23 @@
 
 <script>
 import AddressComponent from './partials/Address.vue';
+import Vue from 'vue';
+import VCalendar from 'v-calendar';
+import 'v-calendar/lib/v-calendar.min.css';
+
+Vue.use(VCalendar);
+
 export default{
+  props: ['title'],
   data: function(){
     return{
       form: {
         profile: {
           title: 'Mr',
-          firstname: '',
-          middlename: '',
-          lastname: '',
+          first_name: '',
+          middle_name: '',
+          last_name: '',
+          nick_name: '',
           dob: '',
           picture: '',
           gender: '',
@@ -191,8 +200,13 @@ export default{
     showAddress: function(){
       this.show = !(this.show);
     },
-    getAddress: function(address){
-      this.form.relations.permanentAddress = address;
+    getAddress: function(address, addressTitle){
+      // this.form.relations[addressTitle] = address;
+      if(addressTitle == 'Permanent Address'){
+          this.form.relations.permanentAddress = address;
+      }else if(addressTitle == 'Present Address'){
+          this.form.relations.residenceAddress = address;
+      }
     },
     skipProfile: function(){
       console.log(this.$store.getters.intendedPath);
@@ -201,7 +215,7 @@ export default{
       // this.$router.go('-1');
     },
     saveProfile: function(){
-      axios.post('', this.form)
+      axios.post('/api/profile/personal', this.form)
       .then(response => {
         console.log(response.status);
       })

@@ -52,7 +52,7 @@
                   <div class="field">
                     <div class="control">
                       <div class="select">
-                        <select class="input is-primary" name="">
+                        <select v-model="address.state" class="input is-primary" name="">
                           <option v-for="state in states" :value="state"> {{ state }}</option>
                         </select>
                       </div>
@@ -102,7 +102,8 @@ export default {
       this.show = !(this.show);
     },
     changeAddress: function(){
-      this.$emit('show-detail', this.address);
+      console.log(this.title);
+      this.$emit('show-detail', this.address, this.title);
     },
     copyAddress: function(){
 
