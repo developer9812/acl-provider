@@ -12,7 +12,7 @@ class PersonalProfile extends Model
 
     public function user()
     {
-      return $this->belongsTo("App\User", 'user_id', 'user_id');
+      return $this->hasOne("App\User", 'user_id', 'user_id');
     }
 
     public function permanentAddress()

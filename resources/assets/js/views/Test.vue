@@ -1,8 +1,17 @@
-<template lang="html">
+admi<template lang="html">
   <div class="">
     <a @click="callApi" class="button is-primary is-outlined">Test API</a>
     <a @click="udpateApi" class="button is-primary is-outlined">Test UPDATE API</a>
     <a @click="updateAddress" class="button is-primary is-outlined">Test ADDRESS UPDATE API</a>
+    <div class="column">
+      <p class="field">
+        <input type="text" name="" ref="editable" value="" v-model="editText">
+      </p>
+      <p class="field">
+        <a class="button" @click="setFocus">Set Focus</a>
+        <a class="button" @click="editText = 'New Text'">Change Text</a>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -10,6 +19,7 @@
 export default {
   data: function(){
     return {
+      editText: 'Demo',
       form: {
       	"profile": {
       	  "title": "Mr",
@@ -52,7 +62,13 @@ export default {
       }
     }
   },
+  mounted: function(){
+    // this.$refs.editable.focus();
+  },
   methods: {
+    setFocus: function(){
+      this.$refs.editable.focus();
+    },
     callApi: function(){
       axios.post('/api/profile/personal', this.form)
       .then(response => {
@@ -98,6 +114,11 @@ export default {
         console.log("ERROR");
         console.log(error);
       })
+    }
+  },
+  watch: {
+    'editText': function(){
+      this.$refs.editable.focus();
     }
   }
 }

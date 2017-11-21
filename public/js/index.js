@@ -29773,7 +29773,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     }]
   }, {
     name: 'login',
-    path: '/auth/login',
+    path: '/login',
     component: __WEBPACK_IMPORTED_MODULE_5__views_Login_vue___default.a
   }]
 });
@@ -36358,7 +36358,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -36377,10 +36377,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      editText: 'Demo',
       form: {
         "profile": {
           "title": "Mr",
@@ -36423,7 +36433,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     };
   },
+  mounted: function mounted() {
+    // this.$refs.editable.focus();
+  },
   methods: {
+    setFocus: function setFocus() {
+      this.$refs.editable.focus();
+    },
     callApi: function callApi() {
       axios.post('/api/profile/personal', this.form).then(function (response) {
         console.log("Response");
@@ -36468,6 +36484,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log(error);
       });
     }
+  },
+  watch: {
+    'editText': function editText() {
+      this.$refs.editable.focus();
+    }
   }
 });
 
@@ -36491,7 +36512,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.updateAddress
     }
-  }, [_vm._v("Test ADDRESS UPDATE API")])])
+  }, [_vm._v("Test ADDRESS UPDATE API")]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('p', {
+    staticClass: "field"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.editText),
+      expression: "editText"
+    }],
+    ref: "editable",
+    attrs: {
+      "type": "text",
+      "name": "",
+      "value": ""
+    },
+    domProps: {
+      "value": (_vm.editText)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.editText = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('p', {
+    staticClass: "field"
+  }, [_c('a', {
+    staticClass: "button",
+    on: {
+      "click": _vm.setFocus
+    }
+  }, [_vm._v("Set Focus")]), _vm._v(" "), _c('a', {
+    staticClass: "button",
+    on: {
+      "click": function($event) {
+        _vm.editText = 'New Text'
+      }
+    }
+  }, [_vm._v("Change Text")])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
