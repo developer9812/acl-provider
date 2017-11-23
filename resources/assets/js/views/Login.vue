@@ -124,7 +124,7 @@ export default {
       axios.post('/login', this.form)
       .then(response => {
         let path = this.$store.getters.intendedPath;
-        console.log("PATH => "+path);
+        // this.$store.commit('setUsername', this.form.username);
         this.$store.commit('setIntendedPath', '/');
         Auth.setPermissions();
         this.$router.push(path);

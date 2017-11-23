@@ -47,7 +47,7 @@
               <div class="field">
                 <label for="" class="title is-6"> Date Of Birth </label>
                 <div class="control">
-                  <v-date-picker mode='single' inputClass='input' v-model='form.profile.dob'></v-date-picker>
+                  <v-date-picker mode='single' :theme-styles='themeStyles' inputClass='input' v-model='form.profile.dob'></v-date-picker>
                   <!-- <input type="text" class="input is-primary" name="" v-model="form.profile.dob" value="" placeholder="Enter Birthdate"> -->
                 </div>
               </div>
@@ -98,11 +98,11 @@
 
           <div class="columns">
             <div class="column">
-              <address-component title="Permanent Address" v-on:show-detail="getAddress"></address-component>
+              <address-component title="Permanent Address" v-on:show-detail="getAddress($event, 'permanent')"></address-component>
             </div>
 
             <div class="column">
-              <address-component title="Present Address" v-on:show-detail="getAddress"></address-component>
+              <address-component title="Present Address" v-on:copy-address="getPermanentAddress" v-on:show-detail="getAddress($event, 'present')"></address-component>
             </div>
           </div>
 
@@ -147,8 +147,6 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
@@ -157,13 +155,20 @@ import AddressComponent from './partials/Address.vue';
 import Vue from 'vue';
 import VCalendar from 'v-calendar';
 import 'v-calendar/lib/v-calendar.min.css';
-
 Vue.use(VCalendar);
 
 export default{
   props: ['title'],
   data: function(){
     return{
+      themeStyles: {
+        header: {
+          color: '#fafafa',
+          backgroundColor: '#6666cc',
+          borderColor: '#404c59',
+          borderWidth: '1px 1px 0 1px',
+        }
+      },
       form: {
         profile: {
           title: 'Mr',
@@ -180,18 +185,19 @@ export default{
         relations: {
           permanentAddress: {},
           residenceAddress: {}
-        }
+        },
+        commonAddress: false
       }
     }
   },
   created: function(){
-    axios.post("http://192.168.1.65/IndiaGuideService/index.php/getStates",{})
-    .then(response => {
-      console.log(response.data);
-    })
-    .catch(error => {
-      console.log(error);
-    })
+    // axios.post("http://192.168.1.65/IndiaGuideService/index.php/getStates",{})
+    // .then(response => {
+    //   console.log(response.data);
+    // })
+    // .catch(error => {
+    //   console.log(error);
+    // })
   },
   methods:{
     getTitle: function(){
@@ -201,12 +207,15 @@ export default{
       this.show = !(this.show);
     },
     getAddress: function(address, addressTitle){
-      // this.form.relations[addressTitle] = address;
-      if(addressTitle == 'Permanent Address'){
+      if(addressTitle == 'permanent'){
           this.form.relations.permanentAddress = address;
-      }else if(addressTitle == 'Present Address'){
+      }else if(addressTitle == 'present'){
           this.form.relations.residenceAddress = address;
       }
+    },
+    getPermanentAddress: function(flag){
+      console.log("FLAG -> "+flag);
+      this.form.commonAddress = flag;
     },
     skipProfile: function(){
       console.log(this.$store.getters.intendedPath);
@@ -217,7 +226,7 @@ export default{
     saveProfile: function(){
       axios.post('/api/profile/personal', this.form)
       .then(response => {
-        console.log(response.status);
+        console.log(response.data);
       })
       .catch(error => {
         console.log(error);
@@ -226,10 +235,14 @@ export default{
   },
   mounted: function(){
     console.log("MOUNTED");
-    console.log(this.form.relations.permanentAddress);
-    // this.$on('show-detail', function(value){
-    //   console.log(value);
-    // });
+    axios.get('/api/profile/personal')
+    .then(response => {
+      console.log("RESPONSE");
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    })
   },
   components: {
     'address-component': AddressComponent

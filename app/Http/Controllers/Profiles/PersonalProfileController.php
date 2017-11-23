@@ -9,29 +9,44 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Models\Address;
 use App\Models\Profiles\PersonalProfile;
-use App\Models\Address;
 use Carbon\Carbon;
 
 class PersonalProfileController extends Controller
 {
-    public function getPersonalProfile(User $user)
+    public function getProfile()
     {
-
+      $profile = Auth::user()->personalProfile->load(['permanentAddress', 'residenceAddress','user']);
+      return json_encode($profile);
     }
 
     public function createProfile(Request $request)
     {
       $profileData = $request->input('profile');
       $relations = $request->input('relations');
-      $permanentAddress = Address::create($request->input('relations.permanentAddress'));
-      $residenceAddress = Address::create($request->input('relations.residenceAddress'));
+      if (PersonalProfile::whereUserId(Auth::user()->user_id)->exists()) {
+        return json_encode([
+          'status' => false,
+          'message' => 'Profile already exists'
+        ]);
+      }
       $profile = new PersonalProfile($profileData);
       $profile->dob = Carbon::parse($request->input('profile.dob'));
+
+      $permanentAddress = Address::create($request->input('relations.permanentAddress'));
       $profile->permanentAddress()->associate($permanentAddress);
-      $profile->residenceAddress()->associate($residenceAddress);
+      if ($request->input('commonAddress')) {
+        $profile->residenceAddress()->associate($permanentAddress);
+      } else {
+        $residenceAddress = Address::create($request->input('relations.residenceAddress'));
+        $profile->residenceAddress()->associate($residenceAddress);
+      }
+
       $profile->user()->associate(Auth::user());
       $profile->save();
-      return json_encode($profile);
+      return json_encode([
+        'status' => true,
+        'profile' => $profile
+      ]);
     }
 
     public function updateProfileAttribute(Request $request, PersonalProfile $profile, string $attribute)
@@ -49,10 +64,26 @@ class PersonalProfileController extends Controller
         $address->update($request->input('value'));
         return json_encode($profile->load('residenceAddresss'));
       }
+      elseif ($attribute == 'name')
+      {
+        $name = $request->input('value');
+        foreach($name as $key => $value) {
+          if (Schema::hasColumn($table, $key)) {
+            $profile->{$key} = $value;
+          }
+        }
+        $profile->save();
+        return json_encode($profile);
+      }
       elseif (Schema::hasColumn($table, $attribute))
       {
-        $profile->{$attribute} = $request->input('value');
-        $profile->save();
+        if ($attribute == 'dob') {
+          $profile->dob = Carbon::parse($request->input('value'));
+          $profile->save();  
+        } else {
+          $profile->{$attribute} = $request->input('value');
+          $profile->save();
+        }
         return json_encode($profile);
       }
       else

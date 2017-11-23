@@ -13,8 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->get('/user/detail', function (Request $request) {
+    // return $request->user();
+    return json_encode($request->user());
 });
 
 // Route::get('/users', 'UserController@getUsers')->middleware('auth:api');
@@ -41,7 +42,9 @@ Route::middleware('auth:api')->group(function(){
   Route::get('/user/{user}/role', 'UserController@getCurrentRole');
   Route::get('/user/permissions', 'Auth\PermissionController@getPermissions');
 
+  Route::get('/profile/personal', 'Profiles\PersonalProfileController@getProfile');
   Route::post('/profile/personal', 'Profiles\PersonalProfileController@createProfile');
   Route::put('/profile/personal/{profile}/{attribute}', 'Profiles\PersonalProfileController@updateProfileAttribute');
   Route::delete('/profile/personal/{profile}', 'Profiles\PersonalProfileController@deleteProfile');
+
 });

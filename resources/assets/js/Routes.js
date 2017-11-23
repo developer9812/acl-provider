@@ -8,6 +8,7 @@ import Login from './views/Login.vue';
 import store from './store';
 import Register from './views/Register.vue';
 import Profile from './views/Profile.vue';
+import ViewProfile from './views/ViewProfile.vue';
 
 import Test from './views/Test.vue';
 
@@ -39,6 +40,11 @@ var router = new VueRouter({
           name: 'test',
           path: '/test',
           component: Test
+        },
+        {
+          name: 'viewprofile',
+          path: '/viewProfile',
+          component: ViewProfile
         }
       ]
     },

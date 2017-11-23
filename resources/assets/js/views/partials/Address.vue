@@ -17,12 +17,13 @@
           <div class="card-content">
             <div class="content">
               <div v-if="title === 'Present Address'" class="control columns">
-                <button class="button" @click="copyAddress" type="button is-primary is-outlined" name="button"> Same As Permanent </button>
+                <!-- <label for=""> </label> -->
+                <button class="button is-primary is-outlined" @click="copyAddress" type="button" name="button"> Same As Permanent </button>
               </div>
 
               <div class="control columns">
                 <div class="column is-2">
-                  <input type="text" class="input" placeholder="block" @change="changeAddress" v-model="address.block" name="" value="">
+                  <input type="text" class="input" placeholder="block" @change="changeAddress" v-model="address.block_no" name="" value="">
                 </div>
                 <div class="column is-5">
                   <input type="text" class="input" placeholder="building" @change="changeAddress" v-model="address.building" name="" value="">
@@ -85,13 +86,17 @@ export default {
   data: function(){
     return {
       address: {
-        block: '',
+        block_no: '',
         building: '',
         street: '',
         landmark: '',
         pincode: '',
+        city: '',
+        district: 'Ahmedabad',
+        district_iso: 'AH',
         state: 'Gujarat',
-        city: ''
+        state_iso: 'GJ',
+        country: 'India'
       },
       states: ["Gujarat","Maharashtra","Rajsthan","MP","UP"],
       show: false
@@ -102,10 +107,11 @@ export default {
       this.show = !(this.show);
     },
     changeAddress: function(){
-      this.$emit('show-detail', this.address, this.title);
+      this.$emit('show-detail', this.address);
     },
     copyAddress: function(){
-      
+      this.show = !(this.show);
+      this.$emit('copy-address', true);
     },
     addressBlock: function(){
       console.log("CHANGE");

@@ -42,7 +42,7 @@ class User extends Authenticatable
 
     public function personalProfile()
     {
-      return $this->hasOne('App\Models\Profiles\PersonalProfile');
+      return $this->hasOne('App\Models\Profiles\PersonalProfile', 'user_id', 'user_id');
     }
 
 }
