@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,9 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers {
+      login as traitLogin;
+    }
 
     /**
      * Where to redirect users after login.
@@ -38,6 +41,24 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(Request $request)
+    {
+        $this->revokeTokens();
+        return $this->traitLogin($request);
+    }
+
+    private function revokeTokens()
+    {
+      $username = request()->input($this->username());
+      if (User::where($this->username(), '=', $username)->exists()) {
+        $user = User::where($this->username(), '=', $username)->first();
+        $tokens = $user->tokens;
+        foreach($tokens as $token) {
+          $token->revoke();
+        }
+      }
     }
 
     public function username()

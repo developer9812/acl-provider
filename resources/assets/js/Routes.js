@@ -37,7 +37,7 @@ var router = new VueRouter({
     },
     {
       name: 'login',
-      path: '/login',
+      path: '/auth/login',
       component: Login
     }
   ]

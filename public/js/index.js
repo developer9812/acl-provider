@@ -29773,7 +29773,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     }]
   }, {
     name: 'login',
-    path: '/login',
+    path: '/auth/login',
     component: __WEBPACK_IMPORTED_MODULE_5__views_Login_vue___default.a
   }]
 });
