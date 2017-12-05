@@ -40,8 +40,12 @@ class PersonalProfileController extends Controller
         $residenceAddress = Address::create($request->input('relations.residenceAddress'));
         $profile->residenceAddress()->associate($residenceAddress);
       }
-
-      $profile->user()->associate(Auth::user());
+      $profile->user_id = Auth::user()->user_id;
+      // return json_encode([
+      //   'user' => Auth::user(),
+      //   'profile' => $profile
+      // ]);
+      // $profile->user()->associate(Auth::user());
       $profile->save();
       return json_encode([
         'status' => true,
@@ -79,7 +83,7 @@ class PersonalProfileController extends Controller
       {
         if ($attribute == 'dob') {
           $profile->dob = Carbon::parse($request->input('value'));
-          $profile->save();  
+          $profile->save();
         } else {
           $profile->{$attribute} = $request->input('value');
           $profile->save();
