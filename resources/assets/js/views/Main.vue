@@ -11,7 +11,7 @@
         </transition>
       </div>
       <div class="column is-paddingless">
-         <router-view></router-view>
+           <router-view></router-view>
       </div>
     </div>
   </div>

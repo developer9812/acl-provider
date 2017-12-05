@@ -53,6 +53,11 @@
                 <a>Forgot Password ?</a>
               </p>
             </div>
+            <div class="level-right">
+              <p class="level-item">
+                <a @click="register">Register</a>
+              </p>
+            </div>
           </div>
           <div class="field">
             <p class="control">
@@ -98,16 +103,28 @@ export default {
   },
   methods: {
     getError: function(field) {
-      if (this.errors[field]) {
+      if(this.errors[field]) {
         return this.errors[field][0];
       }
     },
     submit: function(){
+
+      /*Auth.login(this.form).then(
+        () => {
+          let path = this.$store.getters.intendedPath;
+          this.$store.commit('setIntendedPath', '/');
+          Auth.setPermissions();
+          this.$router.push(path);
+        },
+        error => {
+          console.log("ERROR");
+          this.setError(error);
+        });*/
+
       axios.post('/login', this.form)
       .then(response => {
-        console.log("MAIN RESPONSE");
-        console.log(response);
         let path = this.$store.getters.intendedPath;
+        // this.$store.commit('setUsername', this.form.username);
         this.$store.commit('setIntendedPath', '/');
         Auth.setPermissions();
         this.$router.push(path);
@@ -116,7 +133,11 @@ export default {
         console.log("ERROR");
         this.setError(error);
         console.log(error);
-      })
+      });
+
+    },
+    register: function(){
+        this.$router.push({ name: 'register'});
     },
     googleLogin: function(){
       window.location.href = "/auth/social/google";

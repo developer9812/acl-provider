@@ -3,10 +3,29 @@
     <div class="modal-background" @click="closeView"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">User: {{ user.name }}</p>
+        <p class="modal-card-title">User View</p>
         <button class="delete" aria-label="close" @click="closeView"></button>
       </header>
       <section class="modal-card-body">
+
+        <nav class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <p class="subtitle is-5">
+                <strong>User: {{ user.name }}</strong>
+              </p>
+            </div>
+          </div>
+
+          <div class="navbar-end">
+           <div class="navbar-item">
+               <a class="navbar-item" @click="deleteUser">
+                 Delete Role
+               </a>
+           </div>
+         </div>
+        </nav>
+
         <div class="column">
           <div class="content">
             <p class="content is-small"><strong>Username</strong></p>
@@ -103,6 +122,18 @@ export default {
           console.log(error);
         });
       }
+    },
+    deleteUser: function(){
+      axios.delete('/api/user/' + this.user.id)
+        .then(response => {
+          if (response.data.status) {
+            alert('User Deleted');
+            this.closeView();
+          }
+        })
+        .catch(error => {
+            alert('User not deleted');
+        })
     },
     displayMessage: function(){
       this.showMessage = true;

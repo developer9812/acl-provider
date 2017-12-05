@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -63,8 +64,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $user_id = unique_user_id();
+        Log::info("CREATE USER");
+        Log::info($user_id);
         return User::create([
             'name' => $data['name'],
+            'user_id' => $user_id,
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),

@@ -14,9 +14,15 @@
             <span class="icon is-left">
               <i class="fa fa-user-o"></i>
             </span>
-            <span>username</span>
+            <span> {{ name }}</span>
           </a>
           <div class="navbar-dropdown is-right">
+            <a class="navbar-item" @click="editProfile">
+              <span class="icon is-left">
+                <i class="fa fa-user"></i>
+              </span>
+              <span>Profile</span>
+            </a>
             <a class="navbar-item">
               <span class="icon is-left">
                 <i class="fa fa-cog"></i>
@@ -37,18 +43,40 @@
 </template>
 
 <script>
+
+import Auth from '../services/Auth';
+
 export default {
   data: function(){
     return {
+      name: '',
       dropdown: false,
     }
+  },
+  created: function(){
+    console.log("NAVBAR CREATED");
+    // this.username = this.$store.getters.username;
+  },
+  mounted: function(){
+    axios.get('/api/user/detail')
+    .then(response => {
+      this.name = response.data.name;
+    })
+    .catch(error => {
+      console.log(error);
+    })
   },
   methods: {
     toggleMenu: function(){
       this.$emit('toggle-menu');
     },
     logout: function(){
+      Auth.logout();
       this.$emit('logout');
+    },
+    editProfile: function(){
+      this.dropdown = !(this.dropdown);
+      this.$router.push('/ViewProfile');
     }
   }
 }
