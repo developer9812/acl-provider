@@ -7,8 +7,11 @@ import Role from './views/RoleMaster.vue';
 import Login from './views/Login.vue';
 import store from './store';
 import Register from './views/Register.vue';
-import Profile from './views/Profile.vue';
+import CreateProfile from './views/CreateProfile.vue';
 import ViewProfile from './views/ViewProfile.vue';
+import ProfileView from './views/ProfileView.vue';
+import PermissionMaster from './views/PermissionMaster.vue';
+import Dashboard from './views/Dashboard.vue';
 
 import Test from './views/Test.vue';
 
@@ -22,6 +25,11 @@ var router = new VueRouter({
       component: Main,
       children: [
         {
+          name: 'dashboard',
+          path: '/',
+          component: Dashboard
+        },
+        {
           name: 'users',
           path: '/users',
           component: User,
@@ -32,9 +40,9 @@ var router = new VueRouter({
           component: Role,
         },
         {
-          name: 'profile',
-          path: '/profile',
-          component: Profile
+          name: 'create-profile',
+          path: '/profile/create',
+          component: CreateProfile
         },
         {
           name: 'test',
@@ -42,9 +50,19 @@ var router = new VueRouter({
           component: Test
         },
         {
-          name: 'viewprofile',
-          path: '/viewProfile',
+          name: 'profile',
+          path: '/profile',
           component: ViewProfile
+        },
+        {
+          name: 'profile-view',
+          path: '/profile/view',
+          component: ProfileView
+        },
+        {
+          name: 'permission-master',
+          path: '/master/permissions',
+          component: PermissionMaster
         }
       ]
     },

@@ -10,7 +10,7 @@
           <menu-view v-if="showMenu"></menu-view>
         </transition>
       </div>
-      <div class="column is-paddingless">
+      <div class="column page-content is-paddingless">
            <router-view></router-view>
       </div>
     </div>
@@ -55,4 +55,5 @@ export default {
 
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+</style>

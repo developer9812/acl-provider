@@ -24,6 +24,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers {
       login as traitLogin;
+      logout as traitLogout;
     }
 
     /**
@@ -49,6 +50,12 @@ class LoginController extends Controller
         return $this->traitLogin($request);
     }
 
+    public function logout(Request $request)
+    {
+      $this->revokeTokens();
+      return $this->traitLogout($request);
+    }
+
     private function revokeTokens()
     {
       $username = request()->input($this->username());
@@ -59,6 +66,14 @@ class LoginController extends Controller
           $token->revoke();
         }
       }
+    }
+
+    public function apiLogout()
+    {
+      $this->guard()->logout();
+      $this->revokeTokens();
+      $request->session()->invalidate();
+      return json_encode(['status' => true]);
     }
 
     public function username()

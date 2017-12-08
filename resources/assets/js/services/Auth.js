@@ -15,7 +15,13 @@ export default class Auth {
           console.log("AUTH STATUS");
           console.log(response);
           if (response.status) {
-            resolve(true);
+            this.setPermissions()
+            .then(() => {
+              resolve(true);
+            })
+            .catch(() => {
+              resolve(false);
+            })
           } else {
             resolve(false);
           }

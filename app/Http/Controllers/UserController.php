@@ -76,4 +76,10 @@ class UserController extends Controller
         'status' => Auth::check()
       ]);
     }
+
+    public function getOauthUser()
+    {
+      $user = Auth::user();
+      return json_encode($user->load(['personalProfile', 'roles.permissions']));
+    }
 }

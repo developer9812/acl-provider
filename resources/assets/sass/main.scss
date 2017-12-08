@@ -23,42 +23,14 @@ $primary-color: rgba(227, 74, 26, 0.88);
 
 html, body, #app, .app {
   height: 100%;
+  overflow: hidden;
 }
-
-// .navbar {
-//   background-color: $primary;
-//   color: white;
-//   .navbar-item{
-//     color: white;
-//     &:hover{
-//       color: white;
-//       background-color: darken($primary, 10);
-//     }
-//     &.nav-title{
-//       // font-family: "Raleway", sans-serif;
-//       font-size: large;
-//       font-weight: 600;
-//     }
-//     .navbar-link{
-//       background-color: transparent;
-//       color: white;
-//       &:hover{
-//         background-color: darken($primary, 10);
-//       }
-//     }
-//     &.is-active{
-//       .navbar-link {
-//         background-color: darken($primary, 10);
-//       }
-//     }
-//   }
-//   .navbar-dropdown {
-//     background-color: $primary-color;
-//   }
-// }
 
 .main-content{
   height: calc(100% - 3.25rem);
+  .page-content{
+    overflow: auto;
+  }
 }
 .menu-contianer{
   transition: all 1s ease;

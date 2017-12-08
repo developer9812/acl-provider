@@ -149,8 +149,8 @@ export default{
         let path = this.$store.getters.intendedPath;
         this.$store.commit('setIntendedPath', '/');
         Auth.setPermissions();
-        this.$router.go()
-        // this.$router.push('/profile');
+        // this.$router.go()
+        this.$router.push('/profile/create');
       }).
       catch(error => {
         console.log(error);

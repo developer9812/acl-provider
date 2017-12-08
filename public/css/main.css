@@ -13900,10 +13900,15 @@ body,
 #app,
 .app {
   height: 100%;
+  overflow: hidden;
 }
 
 .main-content {
   height: calc(100% - 3.25rem);
+}
+
+.main-content .page-content {
+  overflow: auto;
 }
 
 .menu-contianer {

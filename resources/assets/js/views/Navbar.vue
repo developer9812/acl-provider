@@ -5,7 +5,7 @@
       </div>
       <div class="navbar-brand">
         <a class="navbar-item nav-title">
-          User Management Portal
+          User Accounts Management
         </a>
       </div>
       <div class="navbar-end">
@@ -76,7 +76,7 @@ export default {
     },
     editProfile: function(){
       this.dropdown = !(this.dropdown);
-      this.$router.push('/ViewProfile');
+      this.$router.push('/profile');
     }
   }
 }

@@ -16,40 +16,45 @@
         <div class="" v-show="show">
           <div class="card-content">
             <div class="content">
-              <div v-if="title === 'Present Address'" class="control columns">
+              <div v-if="!this.primaryAddress" class="control columns">
                 <!-- <label for=""> </label> -->
-                <button class="button is-primary is-outlined" @click="copyAddress" type="button" name="button"> Same As Permanent </button>
-              </div>
-
-              <div class="control columns">
-                <div class="column is-2">
-                  <input type="text" class="input" placeholder="block" @change="changeAddress" v-model="address.block_no" name="" value="">
-                </div>
-                <div class="column is-5">
-                  <input type="text" class="input" placeholder="building" @change="changeAddress" v-model="address.building" name="" value="">
-                </div>
-                <div class="column is-5">
-                  <input type="text" class="input" placeholder="street" @change="changeAddress" v-model="address.street" name="" value="">
-                </div>
+                <button class="button is-primary is-outlined" @click="copyAddress" type="button" name="button"> Same As {{ this.primaryAddressName }} </button>
               </div>
 
               <div class="control columns">
                 <div class="column is-4">
-                  <input type="text" class="input" placeholder="landmark" @change="changeAddress" v-model="address.landmark" name="" value="">
+                  <input type="text" class="input" placeholder="Block No" @change="changeAddress" v-model="address.block_no" name="" value="">
                 </div>
-                <div class="column is-4">
-                  <input type="text" class="input" placeholder="pincode" @change="changeAddress" v-model="address.pincode" name="" value="">
+                <div class="column is-8">
+                  <input type="text" class="input" placeholder="Building" @change="changeAddress" v-model="address.building" name="" value="">
                 </div>
               </div>
 
               <div class="control columns">
-                <div class="column is-4">
+                <div class="column">
+                  <input type="text" class="input" placeholder="Street" @change="changeAddress" v-model="address.street" name="" value="">
+                </div>
+                <div class="column">
+                  <input type="text" class="input" placeholder="Landmark" @change="changeAddress" v-model="address.landmark" name="" value="">
+                </div>
+              </div>
+
+              <div class="control columns">
+                <div class="column">
+                  <input type="text" class="input" placeholder="City" @change="changeAddress" v-model="address.city" name="" value="Ahmedabad">
+                </div>
+                <div class="column">
+                  <input type="text" class="input" placeholder="Pincode" @change="changeAddress" v-model="address.pincode" name="" value="">
+                </div>
+              </div>
+              <div class="control columns">
+
+                <div class="column">
                   <div class="control">
                     <input type="text" class="input" style="background-color:lightgrey" v-model="address.country" disabled="disabled" placeholder="country" name="" value="India">
                   </div>
-                  <!-- <input type="text" class="input" style="background-color:lightgrey" disabled="disabled" placeholder="country" name="" value="India"> -->
                 </div>
-                <div class="column is-4">
+                <div class="column">
                   <div class="field">
                     <div class="control">
                       <div class="select">
@@ -60,19 +65,10 @@
 
                     </div>
                   </div>
-                  <!-- <input type="text" class="input" style="background-color:lightgrey" disabled="disabled" placeholder="state" value="Gujarat" name=""> -->
-                </div>
-                <div class="column is-4">
-                  <input type="text" class="input" placeholder="city" @change="changeAddress" v-model="address.city" name="" value="Ahmedabad">
                 </div>
               </div>
             </div>
           </div>
-          <!-- <footer class="card-footer">
-            <a href="#" class="card-footer-item">Save</a>
-            <a href="#" class="card-footer-item">Edit</a>
-            <a href="#" class="card-footer-item">Delete</a>
-          </footer> -->
         </div>
 
       </div>
@@ -82,7 +78,18 @@
 
 <script>
 export default {
-  props: ['title'],
+  props: ['title','primaryAddress','primaryAddressTitle'],
+  // props: {
+  //   title: {
+  //     type: String
+  //   },
+  //   primary: {
+  //     type: Boolean
+  //   },
+  //   primaryAddressTitle: {
+  //     type: String
+  //   }
+  // },
   data: function(){
     return {
       address: {
@@ -100,6 +107,15 @@ export default {
       },
       states: ["Gujarat","Maharashtra","Rajsthan","MP","UP"],
       show: false
+    }
+  },
+  computed: {
+    primaryAddressName: function(){
+      if (this.primaryAddressTitle && (this.primaryAddressTitle.length > 0)) {
+        return this.primaryAddressTitle;
+      } else {
+        return "Primary";
+      }
     }
   },
   methods: {
@@ -121,5 +137,13 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
+  .control{
+    .column{
+      padding: 0.3rem;
+      .select{
+        width: 100%;
+      }
+    }
+  }
 </style>
