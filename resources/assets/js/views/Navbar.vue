@@ -60,7 +60,8 @@ export default {
   mounted: function(){
     axios.get('/api/user/detail')
     .then(response => {
-      this.name = response.data.name;
+      this.name = response.data.username;
+      this.$store.commit('setUsername', response.data.username);
     })
     .catch(error => {
       console.log(error);

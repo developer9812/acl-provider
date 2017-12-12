@@ -39,26 +39,7 @@
             </div>
             <p class="help is-danger" v-if="errors.hasOwnProperty('password')">{{ getError("password") }}</p>
           </div>
-          <div class="field level">
-            <div class="level-left">
-              <p class="level-item">
-                <label class="checkbox">
-                  <input type="checkbox" v-model="form.remember">
-                  Remember me
-                </label>
-              </p>
-            </div>
-            <div class="level-right">
-              <p class="level-item">
-                <a>Forgot Password ?</a>
-              </p>
-            </div>
-            <div class="level-right">
-              <p class="level-item">
-                <a @click="register">Register</a>
-              </p>
-            </div>
-          </div>
+
           <div class="field">
             <p class="control">
               <button class="button is-fullwidth is-primary login-submit" @click="submit">
@@ -68,13 +49,24 @@
           </div>
           <div class="field">
             <p class="control">
-              <button class="button is-outlined is-info" @click="googleLogin">
+              <button class="button is-outlined is-info is-fullwidth" @click="googleLogin">
                 <span class="icon">
                   <i class="fa fa-google"></i>
                 </span>
                 <span>Sign in with Google</span>
               </button>
             </p>
+          </div><div class="field level">
+            <div class="level-left">
+              <p class="level-item">
+                <a >Forgot Password ?</a>
+              </p>
+            </div>
+            <div class="level-right">
+              <p class="level-item">
+                <a @click="register" class="button ">Create Account</a>
+              </p>
+            </div>
           </div>
           <div v-if="error" class="notification is-danger">
             <p>{{ message }}</p>
@@ -127,7 +119,7 @@ export default {
         // this.$store.commit('setUsername', this.form.username);
         this.$store.commit('setIntendedPath', '/');
         Auth.setPermissions();
-        this.$router.push(path);
+        this.$router.replace(path);
       })
       .catch(error => {
         console.log("ERROR");

@@ -28,13 +28,14 @@ Route::post('/user/register', 'Auth\RegisterController@createFromApi');
 Route::post('master/permissions/sync', 'Auth\PermissionController@syncPermissions');
 
 Route::middleware('auth:api')->group(function(){
-  Route::post('/oauth/user', 'UserController@getOauthUser');
+  Route::get('/oauth/user', 'UserController@getOauthUser');
   Route::post('/user/logout', 'Auth\LoginController@apiLogout');
 
   Route::get('/master/permissions', 'Auth\PermissionController@fetchPermissions');
   Route::post('/master/permission', 'Auth\PermissionController@savePermission');
+  Route::delete('master/permission/{permission}', 'Auth\PermissionController@deletePermission');
+  Route::put('master/permission/{permission}', 'Auth\PermissionController@updatePermission');
 
-  Route::get('/user', 'UserController@index');
   Route::get('/users', 'UserController@getUsers');
   Route::delete('/user/{user}', 'UserController@delete');
 

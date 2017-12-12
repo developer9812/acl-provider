@@ -34,11 +34,11 @@
                 <p class="subtitle is-6">{{ permission.guard_name }}</p>
               </div>
               <div class="column is-narrow">
-                <a href="#" class="button is-info is-small  is-outlined">
+                <a href="#" class="button is-info is-small  is-outlined" @click="editPermission(permission)">
                   <span class="icon"><i class="fa fa-edit"></i></span>
                   <span>Edit</span>
                 </a>
-                <a href="#" class="button is-danger is-small is-outlined">
+                <a href="#" class="button is-danger is-small is-outlined" @click="deletePermission(permission.id)">
                   <span class="icon"><i class="fa fa-trash-o"></i></span>
                   <span>Delete</span>
                 </a>
@@ -50,7 +50,9 @@
     </div>
     <create-permission-view
       v-if="createNew"
-      @close-view="createNew = false">
+      new="newPermission",
+      permission="selectedPermission"
+      @close-view="closeCreateView">
     </create-permission-view>
   </div>
 </template>
@@ -62,21 +64,33 @@ export default {
   data: function(){
     return {
       permissions: {},
-      createNew: false
+      createNew: false,
+      selectedPermission: null,
+      newPermission: true
     }
   },
   created: function(){
     this.getPermissions();
   },
   methods: {
-    deletePermission: function(){
-      axios.delete('/api/master/permission')
+    deletePermission: function(id){
+      axios.delete('/api/master/permission/'+id)
       .then(response => {
         console.log(response.data);
+        if (response.data.status) {
+          this.getPermissions();
+        } else {
+          alert("Unable to delete");
+        }
       })
       .catch(error => {
         console.log(error);
       })
+    },
+    editPermission: function(permission){
+      this.selectedPermission = permission;
+      this.newPermission = false;
+      this.createNew = true;
     },
     getPermissions: function(){
       axios.get('/api/master/permissions')
@@ -90,6 +104,10 @@ export default {
     },
     createPermission: function(){
       this.createNew = true;
+    },
+    closeCreateView: function(){
+      this.createNew = false;
+      this.getPermissions();
     }
   },
   components: {

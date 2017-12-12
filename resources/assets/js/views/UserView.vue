@@ -12,7 +12,7 @@
           <div class="level-left">
             <div class="level-item">
               <p class="subtitle is-5">
-                <strong>User: {{ user.name }}</strong>
+                <strong>User: {{ user.username }}</strong>
               </p>
             </div>
           </div>

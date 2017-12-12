@@ -5,13 +5,13 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state : {
     intendedPath: '/',
-    // username: '',
+    username: '',
     permissions: []
   },
   getters: {
     intendedPath: state => state.intendedPath,
     permissions: state => state.permissions,
-    // username: state => state.username
+    username: state => state.username
   },
   mutations: {
     setIntendedPath: (state, payload) => {
@@ -19,10 +19,10 @@ const store = new Vuex.Store({
     },
     setPermissions: (state, payload) => {
       state.permissions = payload;
+    },
+    setUsername: (state, payload) => {
+      state.username = payload;
     }
-    // setUsername: (state, payload) => {
-    //   state.username = payload;
-    // }
   }
 })
 

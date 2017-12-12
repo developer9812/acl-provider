@@ -31,10 +31,44 @@ class PermissionController extends Controller
 
     public function savePermission(Request $request)
     {
-      if ($request->has('permission')){
-        if (Permission::whereName($request->input('permission'))) {
-
+      if ($request->has('permission') and strlen($request->input('permission')) > 1){
+        if (Permission::whereName($request->input('permission'))->exists()) {
+          abort(422, 'Permission already exists');
+        } else {
+          $permission = Permission::create(['name' => $request->input('permission')]);
+          return json_encode([
+            'status' => true,
+            'permission' => $permission
+          ]);
         }
+      } else {
+        abort(422, 'Provide a valid permission name');
       }
+    }
+
+    public function updatePermission(Permission $permission, Request $request)
+    {
+      if ($request->has('permission') and strlen($request->input('permission')) > 1){
+        if (Permission::whereName($request->input('permission'))->exists()) {
+          abort(422, 'Permission already exists');
+        } else {
+          $permission->name = $request->input('name');
+          $permission->save();
+          return json_encode([
+            'status' => true,
+            'permission' => $permission
+          ]);
+        }
+      } else {
+        abort(422, 'Provide a valid permission name');
+      }
+    }
+
+    public function deletePermission(Permission $permission)
+    {
+      $status = $permission->delete();
+      return json_encode([
+        'status' => $status
+      ]);
     }
 }

@@ -53,6 +53,19 @@ class PersonalProfileController extends Controller
       ]);
     }
 
+    public function validateProfileData(Request $request)
+    {
+      if ($request->input('commonAddress')) {
+
+      }
+    }
+
+    public function validateAddress($addressData)
+    {
+      $required = ['street'];
+      
+    }
+
     public function updateProfileAttribute(Request $request, PersonalProfile $profile, string $attribute)
     {
       $table = $profile->getTable();

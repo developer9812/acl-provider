@@ -3,7 +3,7 @@
     <div class="section">
       <div class="columns is-multiline">
         <div class="column is-4">
-          <div class="box">
+          <div class="box" @click="redirectSiteServer">
             <div class="columns">
               <div class="column is-narrow">
                 <p><i class="fa fa-graduation-cap app-logo"></i></p>
@@ -69,10 +69,23 @@
 
 <script>
 export default {
+  methods: {
+    redirectSiteServer: function(){
+      window.location.href = 'http://192.168.1.66:5012/siteserver/' + this.$store.getters.username;
+      // axios.get('http://192.168.1.66:5012/siteserver/' + this.$store.getters.username)
+      // .then(response => {
+      //   console.log(response);
+      //   window.location.href = response;
+      // })
+      // .catch(error => {
+      //
+      // })
+    }
+  }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .app-logo{
   font-size: 3rem;
 }
