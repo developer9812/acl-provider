@@ -162,8 +162,9 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../images/background.png');
-  background-repeat: no-repeat;
+  // background-image: url('../../images/background.png');
+  background: whitesmoke;
+  // background-repeat: no-repeat;
   padding: 1rem;
   .image{
     img{

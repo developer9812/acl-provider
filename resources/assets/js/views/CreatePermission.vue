@@ -3,8 +3,7 @@
     <div class="modal-background" @click="closeView"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title" v-if="new">New Permission</p>
-        <p class="modal-card-title" v-else>Edit Permission</p>
+        <p class="modal-card-title">New Permission</p>
         <button class="delete" aria-label="close" @click="closeView"></button>
       </header>
       <section class="modal-card-body">
@@ -29,14 +28,6 @@ import vSelect from 'vue-select';
 
 export default {
   props: {
-    new: {
-      type: Boolean,
-      default: true
-    },
-    permission: {
-      type: Object,
-      default: null
-    }
   },
   data: function(){
     return {
@@ -47,17 +38,10 @@ export default {
   },
   mounted: function(){
     // this.getUserRoles();
-    if (!this.new) {
-      this.permissionName = this.permission.name;
-    }
   },
   methods: {
     submit: function(){
-      if (this.new) {
         this.savePermission();
-      } else {
-        this.updatePermission();
-      }
     },
     savePermission: function(){
       axios.post('/api/master/permission', {

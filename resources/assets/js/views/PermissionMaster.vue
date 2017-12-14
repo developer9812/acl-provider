@@ -33,7 +33,7 @@
                 <h3 class="title is-5">{{ permission.name }}</h3>
                 <p class="subtitle is-6">{{ permission.guard_name }}</p>
               </div>
-              <div class="column is-narrow">
+              <div class="column is-narrow" v-if="permission.user_defined == '1'">
                 <a href="#" class="button is-info is-small  is-outlined" @click="editPermission(permission)">
                   <span class="icon"><i class="fa fa-edit"></i></span>
                   <span>Edit</span>
@@ -50,8 +50,6 @@
     </div>
     <create-permission-view
       v-if="createNew"
-      new="newPermission",
-      permission="selectedPermission"
       @close-view="closeCreateView">
     </create-permission-view>
   </div>
@@ -64,9 +62,7 @@ export default {
   data: function(){
     return {
       permissions: {},
-      createNew: false,
-      selectedPermission: null,
-      newPermission: true
+      createNew: false
     }
   },
   created: function(){
@@ -88,9 +84,9 @@ export default {
       })
     },
     editPermission: function(permission){
-      this.selectedPermission = permission;
-      this.newPermission = false;
-      this.createNew = true;
+      // this.selectedPermission = permission;
+      // this.newPermission = false;
+      // this.createNew = true;
     },
     getPermissions: function(){
       axios.get('/api/master/permissions')

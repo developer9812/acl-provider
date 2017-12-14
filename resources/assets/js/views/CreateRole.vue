@@ -7,14 +7,7 @@
         <button class="delete" aria-label="close" @click="closeView"></button>
       </header>
       <section class="modal-card-body">
-        <div class="field">
-          <label class="label">Name of the role</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="eg: admin" v-model="roleName">
-          </div>
-          <p class="help is-danger" v-if="error">Enter a valid name</p>
-        </div>
-        <hr>
+
         <div class="field">
           <label class="label">Define a Parent Role</label>
         </div>
@@ -36,7 +29,6 @@
             </v-select>
           </div>
         </div>
-
         <div class="field" v-else>
           <div class="control">
             <v-select
@@ -49,6 +41,17 @@
             </v-select>
           </div>
         </div>
+
+        <hr>
+
+        <div class="field">
+          <label class="label">Name of the role</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="eg: admin" v-model="roleName">
+          </div>
+          <p class="help is-danger" v-if="error">Enter a valid name</p>
+        </div>
+
       </section>
       <footer class="modal-card-foot">
         <button class="button is-success" @click="saveRole">Save changes</button>

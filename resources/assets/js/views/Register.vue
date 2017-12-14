@@ -170,8 +170,9 @@ export default{
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../images/background.png');
-  background-repeat: no-repeat;
+  background: whitesmoke;
+  // background-image: url('../../images/background.png');
+  // background-repeat: no-repeat;
   padding: 2rem;
   overflow: auto;
   .image{

@@ -29,6 +29,7 @@ Route::post('master/permissions/sync', 'Auth\PermissionController@syncPermission
 
 Route::middleware('auth:api')->group(function(){
   Route::get('/oauth/user', 'UserController@getOauthUser');
+  Route::get('/user/token/verify', 'UserController@verifyToken');
   Route::post('/user/logout', 'Auth\LoginController@apiLogout');
 
   Route::get('/master/permissions', 'Auth\PermissionController@fetchPermissions');
@@ -48,8 +49,10 @@ Route::middleware('auth:api')->group(function(){
   Route::post('/user/roles/permission/update', 'UserRoleController@updatePermissions');
   Route::get('/user/roles/permission', 'UserRoleController@getPermissions');
   Route::delete('/user/role/{role}', 'UserRoleController@deleteRole');
-  Route::post('/user/role/set', 'UserController@setRole');
+  Route::post('/user/role/add', 'UserController@setRole');
+  Route::post('/user/role/remove', 'UserController@removeRole');
   Route::get('/user/{user}/role', 'UserController@getCurrentRole');
+  Route::get('/user/{user}/roles', 'UserController@getAssociatedRoles');
   Route::get('/user/permissions', 'Auth\PermissionController@getPermissions');
 
   Route::get('/profile/personal', 'Profiles\PersonalProfileController@getProfile');

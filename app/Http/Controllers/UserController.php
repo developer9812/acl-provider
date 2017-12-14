@@ -39,6 +39,16 @@ class UserController extends Controller
       return view('user.users');
     }
 
+    public function verifyToken()
+    {
+      $user = Auth::user();
+      $token = $user->token();
+      return json_encode([
+        'user' => $user,
+        'token' => $token
+      ]);
+    }
+
     public function delete(User $user)
     {
       $status = $user->delete();
@@ -58,15 +68,31 @@ class UserController extends Controller
     {
       $role = Role::find($request->get('role'));
       $user = User::find($request->get('user'));
-      $user->syncRoles([$role->name]);
+      $user->assignRole($role);
+      // $user->syncRoles([$role->name]);
       event('auth.logout', [$user]);
       return json_encode($user->roles()->get());
+    }
+
+    public function removeRole(Request $request)
+    {
+      $role = Role::find($request->get('role'));
+      $user = User::find($request->get('user'));
+      $user->removeRole($role);
+      event('auth.logout', [$user]);
+      return json_encode($user->roles()->get());      
     }
 
     public function getCurrentRole(User $user)
     {
       $role = $user->roles()->first();
       return json_encode($role);
+    }
+
+    public function getAssociatedRoles(User $user)
+    {
+      $roles = $user->roles()->get();
+      return json_encode($roles);
     }
 
     public function getStatus()

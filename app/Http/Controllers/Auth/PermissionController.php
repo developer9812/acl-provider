@@ -35,7 +35,11 @@ class PermissionController extends Controller
         if (Permission::whereName($request->input('permission'))->exists()) {
           abort(422, 'Permission already exists');
         } else {
-          $permission = Permission::create(['name' => $request->input('permission')]);
+          $permission = Permission::create([
+            'name' => $request->input('permission'),
+            'user_defined' => true,
+            'guard_name' => 'web'
+          ]);
           return json_encode([
             'status' => true,
             'permission' => $permission

@@ -87,7 +87,7 @@ class PermissionCreator extends Command
         $this->info('Permission Already Exists: ' . $permission);
       } else {
         $this->info('Creating Permission: ' . $permission);
-        Permission::create(['name' => $permission]);
+        Permission::create(['name' => $permission, 'guard_name' => 'web']);
       }
     }
 
