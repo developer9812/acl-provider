@@ -34,14 +34,13 @@
                 <p class="subtitle is-6">{{ permission.guard_name }}</p>
               </div>
               <div class="column is-narrow" v-if="permission.user_defined == '1'">
-                <a href="#" class="button is-info is-small  is-outlined" @click="editPermission(permission)">
-                  <span class="icon"><i class="fa fa-edit"></i></span>
-                  <span>Edit</span>
-                </a>
                 <a href="#" class="button is-danger is-small is-outlined" @click="deletePermission(permission.id)">
                   <span class="icon"><i class="fa fa-trash-o"></i></span>
                   <span>Delete</span>
                 </a>
+              </div>
+              <div class="column is-narrow content" v-else>
+                <p><span class="icon"><i class="fa fa-lock"></i></span></p>
               </div>
             </div>
           </div>
@@ -82,11 +81,6 @@ export default {
       .catch(error => {
         console.log(error);
       })
-    },
-    editPermission: function(permission){
-      // this.selectedPermission = permission;
-      // this.newPermission = false;
-      // this.createNew = true;
     },
     getPermissions: function(){
       axios.get('/api/master/permissions')

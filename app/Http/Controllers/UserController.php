@@ -41,7 +41,7 @@ class UserController extends Controller
 
     public function verifyToken()
     {
-      $user = Auth::user();
+      $user = Auth::user()->load(['roles.permissions']);
       $token = $user->token();
       return json_encode([
         'user' => $user,
@@ -80,7 +80,7 @@ class UserController extends Controller
       $user = User::find($request->get('user'));
       $user->removeRole($role);
       event('auth.logout', [$user]);
-      return json_encode($user->roles()->get());      
+      return json_encode($user->roles()->get());
     }
 
     public function getCurrentRole(User $user)

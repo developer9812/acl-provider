@@ -40823,7 +40823,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -40836,7 +40836,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CreatePermission_vue__ = __webpack_require__(183);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CreatePermission_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__CreatePermission_vue__);
-//
 //
 //
 //
@@ -40920,11 +40919,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }).catch(function (error) {
         console.log(error);
       });
-    },
-    editPermission: function editPermission(permission) {
-      // this.selectedPermission = permission;
-      // this.newPermission = false;
-      // this.createNew = true;
     },
     getPermissions: function getPermissions() {
       var _this2 = this;
@@ -41214,16 +41208,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(permission.guard_name))])]), _vm._v(" "), (permission.user_defined == '1') ? _c('div', {
       staticClass: "column is-narrow"
     }, [_c('a', {
-      staticClass: "button is-info is-small  is-outlined",
-      attrs: {
-        "href": "#"
-      },
-      on: {
-        "click": function($event) {
-          _vm.editPermission(permission)
-        }
-      }
-    }, [_vm._m(1, true), _vm._v(" "), _c('span', [_vm._v("Edit")])]), _vm._v(" "), _c('a', {
       staticClass: "button is-danger is-small is-outlined",
       attrs: {
         "href": "#"
@@ -41233,7 +41217,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.deletePermission(permission.id)
         }
       }
-    }, [_vm._m(2, true), _vm._v(" "), _c('span', [_vm._v("Delete")])])]) : _vm._e()])])])
+    }, [_vm._m(1, true), _vm._v(" "), _c('span', [_vm._v("Delete")])])]) : _c('div', {
+      staticClass: "column is-narrow content"
+    }, [_vm._m(2, true)])])])])
   }))]), _vm._v(" "), (_vm.createNew) ? _c('create-permission-view', {
     on: {
       "close-view": _vm.closeCreateView
@@ -41263,14 +41249,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('span', {
     staticClass: "icon"
   }, [_c('i', {
-    staticClass: "fa fa-edit"
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "icon"
-  }, [_c('i', {
     staticClass: "fa fa-trash-o"
   })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('span', {
+    staticClass: "icon"
+  }, [_c('i', {
+    staticClass: "fa fa-lock"
+  })])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

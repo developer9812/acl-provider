@@ -9,6 +9,6 @@ class Email extends Model
     public function profile()
     {
       $this->belongsTo('App\Models\Profiles\PersonalProfile', 'profile_id');
-      
+
     }
 }
